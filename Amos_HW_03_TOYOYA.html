@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TOYOTA</title>
     <link rel="stylesheet" href="reset.css">
     <style>
         .body{
@@ -16,14 +16,18 @@
             height: 100%;
             margin: auto;
             padding: 100px;
-            
         }
         .advantage_block{
             width: 960px;
             display: flex;
             flex-wrap: wrap;
             position: relative;
-            margin: auto;            
+            margin: auto;
+            opacity: 0;  
+            transition: 1s;
+        }
+        .advantage_block:hover{
+            opacity: 1s;
         }
         .info{
             width: 360px;
@@ -31,19 +35,18 @@
             position: absolute;
             z-index: 5;
             left: -100px;
-            opacity: 0.5;
+            
         }
-        .info:hover{
-            left:0;
-            transition: 1s;
-            opacity: 1;
+        .advantage_block:hover .info{
+            left: 0;
         }
         .full_advantage .advantage_block:nth-child(even)  .info{
             left: 700px;
         }
-        .full_advantage .advantage_block:nth-child(even)  .info:hover{
+        .full_advantage .advantage_block:hover:nth-child(even)  .info{
             left: 600px;
         }
+        
         .info_title{
             display: flex;
             background-color: red;
@@ -79,11 +82,20 @@
         .mainpic{
         position: relative;
         top:-200px;
-        /* margin: 0 auto; */
-        left: 150px;
+        left: 250px;
         box-sizing: border-box;
-
         }
+        .advantage_block:hover .mainpic{
+            left: 150px;
+        }
+        .full_advantage .advantage_block:nth-child(even) .mainpic{
+            left: -100px;
+        }
+
+        .full_advantage .advantage_block:nth-child(even):hover .mainpic{
+            left: 15px;;
+        } 
+        
         .mainpic img{
             width: 695px;
             height: 430px;
@@ -93,10 +105,10 @@
             height: 40px;
             position: absolute;
             top: 50%;
-            left: 94%;
+            right: -15px;
         }
         .full_advantage .advantage_block:nth-child(even) .mainpic #yt{
-            left:-2%;
+            left:-15px;
         }
         .block{
             background-color: gray;
@@ -106,23 +118,28 @@
             position: relative;
             margin-left: auto ;
             margin-top:30px ;
+            right:-100px;
+        }
+        .advantage_block:hover .block{
+            right:0px;
         }
         .full_advantage .advantage_block:nth-child(even) .block{
+            top:-100px;
             right:100px;
+        }
+        .full_advantage .advantage_block:hover:nth-child(even) .block{
+        top: 0;
         }
         .revolution{
             background-color: #EEEEEE;
             padding: 20px;
             width: 682px;
             position: relative;
-            top:-100px ;
+            top:-125px ;
             left:50px;
-            opacity: 0.5;
         }
-        .revolution:hover{
+        .advantage_block:hover .revolution{
             top:-225px ;
-            transition: 0.5s;
-            opacity: 1;
         }
         .full_advantage .advantage_block:nth-child(even) .revolution{
             margin-left: auto;
@@ -163,7 +180,6 @@
             color: red;
             font-size: 1em;            
         }
-
     </style>
 </head>
 <body>
