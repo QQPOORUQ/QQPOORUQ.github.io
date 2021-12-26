@@ -30,12 +30,20 @@
             color: white;
             position: absolute;
             z-index: 5;
-            
+            left: -100px;
+            opacity: 0.5;
+        }
+        .info:hover{
+            left:0;
+            transition: 1s;
+            opacity: 1;
         }
         .full_advantage .advantage_block:nth-child(even)  .info{
-            right: 0%;
+            left: 700px;
         }
-
+        .full_advantage .advantage_block:nth-child(even)  .info:hover{
+            left: 600px;
+        }
         .info_title{
             display: flex;
             background-color: red;
@@ -107,8 +115,14 @@
             padding: 20px;
             width: 682px;
             position: relative;
-            top:-225px ;
+            top:-100px ;
             left:50px;
+            opacity: 0.5;
+        }
+        .revolution:hover{
+            top:-225px ;
+            transition: 0.5s;
+            opacity: 1;
         }
         .full_advantage .advantage_block:nth-child(even) .revolution{
             margin-left: auto;
