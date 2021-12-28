@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="grid.css">
+    <style>
+        body{
+            font-family: "Roboto",sans-serif;
+        }
+        .frontpage{
+            width: 100%;
+            height: 100%;
+            margin: auto;
+            text-align: left;
+            
+        }
+        .item{
+            /* border: 1px solid blue; */
+        }
+        .container{
+            /* border: 1px solid green; */
+            word-wrap:break-word;
+            margin: auto;
+            
+        }
+
+        h2{
+            font:36px "Roboto";
+            line-height:1.35em;
+            color: #1d273b;
+            letter-spacing: 0px;
+            font-weight: 200;
+            margin-top: 30px;
+            font-style: normal;
+            
+        }
+        p{
+            font-weight: 300;
+            line-height: 1.5em;
+            color: #5d6678;
+            letter-spacing: -0.14px;
+
+        }
+        img{
+            width: 100%;
+        }
+        .button{
+            padding: 12px 0 10px 0;
+            text-align: center;
+            box-sizing: border-box;
+            min-width: 100px;
+            
+        }
+        .button .item{
+            width: 50%;
+            border-radius: 7px;
+        }
+        .button a{
+            line-height: 2em;
+            text-decoration: none;
+            font-weight: 600;
+
+        }
+        .color_button .item{
+            background-color: #1fde82;
+        }
+        .color_button .item:hover{
+            background-color: gray;
+            transition: .5s;
+        }
+        .color_button a{
+            color:white;
+        }
+        /* service area */
+        .section_service{
+            background-color: rgb(247,248,249);
+        }
+        .section_service .item{
+            background-color: white;
+            padding: 20px;
+            margin: 10px ;
+        }
+        .section_service .service_txt{
+            padding-left: 0;
+            margin-left: 0;
+            background-color: rgb(247,248,249);
+        }
+
+        .section_service .pic{
+            width: 70px;
+        }
+        @media screen and (min-width:1024px) {
+            .section_service .pic{
+            width: 92px;
+            }
+        }
+        .section_service h3{
+            font-size: 30px;
+            margin:  15px 0;
+        }
+        .section_service p{
+            margin: 15px 0;
+        }
+        .readmore a{
+            color: rgb(112,120,136);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        /* reson area */
+        .section_reason{
+            background-color: #2570ff;
+            padding: 30px 0 42px;
+        }
+        .reason_statistics .item{
+            /* border: 1px solid yellow; */
+            background-color: #3F81FF;
+            display: block;
+            text-align: center;
+            border-radius: 10px;
+            margin: 20px; 
+            padding: 20px 5px;
+            
+        }
+        .reason_statistics span{
+            color:white;
+            display: block;
+            font-size:34px;
+        }
+        .reason_statistics p{
+            color: white;
+            line-height: 28px;
+        }
+        .reason_txt .item{
+            /* border:1px solid red; */
+            margin-bottom: 20px ;
+            padding: 0 20px 20px 20px;
+            
+        }
+        .reason_txt  h2{
+            color: white;
+            margin-bottom: 20px;
+        }
+        .reason_txt p{
+            color: white;
+            margin-bottom: 20px;
+        }
+        .reason_txt .button{
+            text-align: left;
+            
+            
+        }
+        .reason_txt a{
+            border:2px solid white;
+            text-decoration: none;
+            padding: 10px 15px;
+            color: white;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+
+    </style>
+<body>
+    <div class="frontpage">
+
+        <section class="container section_creat">
+            <div class="row success">
+                <div class="success_content col-12 col-md-6">
+                    <div class="row">
+                        <div class="col-12 col-md-11">
+                            <div class="item"><h2>Our creativity is your success</h2></div>
+                        </div>
+                        <div class="col-12 col-md-10">
+                            <div class="item">
+                                <p>We break all boundaries if they happen on our way of project’s development!</p>
+                            </div>
+                        </div>
+                        <div class="button color_button col-6 col-md-6">
+                            <div class="item">
+                                <a href="#">LEARN MORE</a>
+                            </div>
+                        </div>
+                        <div class="button  col-6 col-md-6">
+                            <div class="item">
+                                <a href="#">WATCH VIDEO</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col creat_pic col-12 col-md-6"><div class="item"><img src="/Amos_HW_4_pic/01.svg" alt="creat_pic01"></div></div>
+            </div>
+
+            <div class="row passion">
+                <div class="col creat_pic col-12 col-md-6"><div class="item"><img src="/Amos_HW_4_pic/02.webp" alt="creat_pic01"></div></div>
+                <div class="passion_content col-12 col-md-6">
+                    <div class="row">
+                        <div class="col-12 col-md-11">
+                            <div class="item"><h2>Creative challenges are our passion</h2></div>
+                        </div>
+                        <div class="col-12 col-md-10">
+                            <div class="item">
+                                <p>Our team of designers and developers work closely together to build a creative and positive working environment. Functionality is as important to us as aesthetics.</p>
+                            </div>
+                        </div>
+                        <div class="button color_button col-6 col-md-6 ">
+                            <div class="item">
+                                <a href="#">ABOUT US</a>
+                            </div>
+                        </div>
+                        <div class="button  col-6 col-md-6">
+                            <div class="item">
+                                <a href="#">CONTACT US</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        <section class="container section_service">
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <div class="item service_txt">
+                    <h2>We provide a wide range of creative services</h2>
+                    </div>
+            </div>
+                <div class="col-12 col-md-4">
+                    <div class="item">
+                        <div class="pic"><img src="/Amos_HW_4_pic/icon-1.svg" alt="services_icon1"></div>
+                        <h3>Web Design </h3>
+                        <p>A great brand combines design and conveys company’s value messaging to evoke emotion and drive strategy.</p>
+                        <div class="readmore"><a href="#">READ MORE</a></div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="item">
+                        <div class="pic"><img src="/Amos_HW_4_pic/icon-2.svg" alt="services_icon2"></div>
+                        <h3>Graphic Design</h3>
+                        <p>A great brand combines design and conveys company’s value messaging to evoke emotion and drive strategy.</p>
+                        <div class="readmore"><a href="#">READ MORE</a></div>
+
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="item">
+                        <div class="pic"><img src="/Amos_HW_4_pic/icon-3.svg" alt="services_icon3"></div>
+                        <h3>Video Production</h3>
+                        <p>A great brand combines design and conveys company’s value messaging to evoke emotion and drive strategy.</p>
+                        <div class="readmore"><a href="#">READ MORE</a></div>
+
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="item">
+                        <div class="pic"><img src="/Amos_HW_4_pic/icon-4.svg" alt="services_icon4"></div>
+                        <h3>SEO</h3>
+                        <p>A great brand combines design and conveys company’s value messaging to evoke emotion and drive strategy.</p>
+                        <div class="readmore"><a href="#">READ MORE</a></div>
+
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="item">
+                        <div class="pic"><img src="/Amos_HW_4_pic/icon-5.svg" alt="services_icon5"></div>
+                        <h3>Digital Marketing</h3>
+                        <p>A great brand combines design and conveys company’s value messaging to evoke emotion and drive strategy.</p>
+                        <div class="readmore"><a href="#">READ MORE</a></div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="item">
+                        <div class="pic"><img src="/Amos_HW_4_pic/icon-6.svg" alt="services_icon6"></div>
+                        <h3>Infographics</h3>
+                        <p>A great brand combines design and conveys company’s value messaging to evoke emotion and drive strategy.</p>
+                        <div class="readmore"><a href="#">READ MORE</a></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="container section_contact">
+            <div class="row contact">
+                <div class="success_content col-12 col-md-6">
+                    <div class="row">
+                        <div class="col-12 col-md-11">
+                            <div class="item"><h2>If you have any questions, please contact us</h2></div>
+                        </div>
+                        <div class="col-12 col-md-10">
+                            <div class="item">
+                                <p>Our professional support team try to do their best to provide you with high-quality consultations concerning any question about our services.</p>
+                            </div>
+                        </div>
+                        <div class="button color_button col-6 col-md-6">
+                            <div class="item">
+                                <a href="#">CONTACT US</a>
+                            </div>
+                        </div>
+                        <div class="button  col-6 col-md-6">
+                            <div class="item">
+                                <a href="#">SUBSCRIBE</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col creat_pic col-12 col-md-6"><div class="item"><img src="/Amos_HW_4_pic/contactus.svg" alt="contactus01"></div></div>
+            </div>
+        </section>
+        <section class="container section_reason">
+            
+                <div class="row reason">
+                    <div class="col-12 reason_statistics col-md-6">
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <div class="item">
+                                    <span>1880+</span>
+                                    <p>A large team of the best specialists.</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="item">
+                                    <span>56</span>
+                                    <p>A large team of the best specialists.</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="item">
+                                    <span>2000+</span>
+                                    <p>A large team of the best specialists.</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="item">
+                                    <span>100%</span>
+                                    <p>A large team of the best specialists.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 reason_txt col-md-6">
+                        <div class="item">
+                            <h2>Why choose our studio for your projects?</h2>
+                            <p>We are a command of professional and enthusiastic people, who like what they do and are always in the process of growing and improving their skills.</p>
+                            <div class="button">
+                                <a href="#">ORDER SERVICE</a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+        </section>
+
+
+
+
+
+
+
+    </div>
+</body>
+</html>

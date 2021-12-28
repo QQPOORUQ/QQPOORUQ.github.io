@@ -7,7 +7,7 @@
 }
 /* 根目錄與自訂函數*/
 :root{
-    --col-gap:15px;
+    --col-gap:10px;
     /* 當要調整左右margin只需調整該變數 */
 }
 /*  container 固定寬度的容器  row分欄容器 col欄 */
@@ -18,14 +18,18 @@
     margin-right: calc(var(--col-gap)) * -1;
     /* 使用變數要加var*/
 }
+.item{
+    margin: 15px 10;
+    padding: 10px 0 10px 0;
+}
 
 /* 屬性選取器 所有class名稱 "包含"col-的都選取到 */
 [class*='col-'],
 /* 「>」選取器是「僅選到下一個層」的物件 */
 [class*='row-cols'] > .col
 {
-    padding-left: 10px;
-    padding-right: 10px;
+    /* padding-left: 10px;
+    padding-right: 10px; */
     box-sizing: border-box;
 }
 /* .col-數字 數字代表佔一列中的n/12  12 也是自己決定的(1 2 3 6 的最小公倍數)*/
@@ -41,11 +45,7 @@
 .col-10{width: 83.333333%;}
 .col-11{width: 91.666666%;}
 .col-12{width: 100%;}
-.item{
-    height: 100px;
-    background-color: #fa0;
-    margin-bottom: 20px;
-}
+
 /* 平板直向 */
 @media screen and (min-width: 768px){
     .col-md-1{width: 8.333333%; }
