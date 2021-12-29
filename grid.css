@@ -90,7 +90,7 @@
     .col-xl-11{width: 91.666666%;}
     .col-xl-12{width: 100%;}
 }
-/* row-cols區 */
+/* row-cols區 .row-cols-1 那一列的每一個COL都給100%; */    
 .row-cols-1 > .col{
     width: 100%;
 }
