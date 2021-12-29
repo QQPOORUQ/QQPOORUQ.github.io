@@ -82,7 +82,7 @@
         .section_service .item{
             background-color: white;
             padding: 20px;
-            margin: 10px ;
+            margin: 20px 10px ;
         }
         .section_service .service_txt{
             padding-left: 0;
@@ -161,11 +161,70 @@
             border-radius: 5px;
             font-weight: 500;
         }
+        /* step area */
+        .section_steps .item{
+            margin: 0 20px;
+        }
+        .steps_txt .item{
+            margin-right:  8.333333%;
+        }
+        .number{
+            width: 70px;
+        }
+        @media screen and (min-width:1024px) {
+            .number{
+            width: 82px;
+            }
+        }
+        .section_steps h3{
+            font-size: 20px;
+            line-height: 2em;
+        }
+        @media screen and (min-width:768px)
+        {
+            .section_steps .row:nth-child(even){
+            flex-direction: row-reverse;
+            }
+            .number , .steps_txt .item{
+            position: relative;
+            top: 50%;
+        }
+        }
+        .steps_title h2{
+            padding: 20px 0;
+        }
+        /* header{
+            display: flex;
+            max-width: 1200px;
 
+        }
+        nav{
+            display: flex;
+            margin-left: auto;
+            line-height: 54px;
+        }
+        nav .item a{
+            
+        } */
     </style>
 <body>
     <div class="frontpage">
-
+        <!-- <header>
+            <div class="logo">
+                <img src="/Amos_HW_4_pic/logo.webp" alt="logo">
+            </div>
+            <nav>
+                <div class="Home"><a href="#">Home</a></div>
+                <div class="About"><a href="#">About</a></div>
+                <div class="Service"><a href="#">Service</a></div>
+                <div class="Team"><a href="#">Team</a></div>
+                <div class="CASE"><a href="#">Case studio</a></div>
+                <div class="Contact"><a href="#">Contacts</a></div>
+            </nav>
+            <div class="sub">
+                <a href="#">SUBSCRIBE</a>
+            </div>
+        </header> -->
         <section class="container section_creat">
             <div class="row success">
                 <div class="success_content col-12 col-md-6">
@@ -352,7 +411,130 @@
                 </div>
 
         </section>
+        <section class=" container section_steps">
+            <div class="row steps_title">
+                <div class="col-12 col-md-12">
+                    <div class="item">
+                        <h2>Steps of our work</h2>
+                    </div>
+                </div>
+            </div>
 
+            <div class="row step_1">
+                <div class="col-12 col-md-7">
+                    <div class="row">
+                        <div class="col-12 col-md-3">
+                            <div class="item number">
+                                <img src="/Amos_HW_4_pic/number-01.svg" alt="number-01">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-9 steps_txt">
+                            <div class="item">
+                                <h3>Meeting With The Customer</h3>
+                                <p>The first meeting is very import to form contact and discuss the main ideas of the project.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-7 step_pic col-md-4">
+                    <div class="item">
+                        <img src="/Amos_HW_4_pic/home-image-4.svg" alt="step_1_pic">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row step_2">
+                <div class="col-12 col-md-7">
+                    <div class="row">
+                        <div class="col-12 col-md-3">
+                            <div class="item number">
+                                <img src="/Amos_HW_4_pic/number-02.svg" alt="number-02">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-9 steps_txt">
+                            <div class="item">
+                                <h3>Meeting With The Customer</h3>
+                                <p>The first meeting is very import to form contact and discuss the main ideas of the project.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-7 step_pic col-md-4">
+                    <div class="item">
+                        <img src="/Amos_HW_4_pic/home-image-5.svg" alt="step_1_pic">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row step_3">
+                <div class="col-12 col-md-7">
+                    <div class="row">
+                        <div class="col-12 col-md-3">
+                            <div class="item number">
+                                <img src="/Amos_HW_4_pic/number-03.svg" alt="number-03">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-9 steps_txt">
+                            <div class="item">
+                                <h3>Meeting With The Customer</h3>
+                                <p>The first meeting is very import to form contact and discuss the main ideas of the project.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-7 step_pic col-md-4">
+                    <div class="item">
+                        <img src="/Amos_HW_4_pic/home-image-6.svg" alt="step_1_pic">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row step_4">
+                <div class="col-12 col-md-7 ">
+                    <div class="row">
+                        <div class="col-12 col-md-3">
+                            <div class="item number">
+                                <img src="/Amos_HW_4_pic/number-04.svg" alt="number-05">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-9 steps_txt">
+                            <div class="item">
+                                <h3>Meeting With The Customer</h3>
+                                <p>The first meeting is very import to form contact and discuss the main ideas of the project.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-7 step_pic col-md-4">
+                    <div class="item">
+                        <img src="/Amos_HW_4_pic/home-image-7.svg" alt="step_1_pic">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row step_5">
+                <div class="col-12 col-md-7 ">
+                    <div class="row">
+                        <div class="col-12 col-md-3">
+                            <div class="item number">
+                                <img src="/Amos_HW_4_pic/number-05.svg" alt="number-05">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-9 steps_txt">
+                            <div class="item">
+                                <h3>Meeting With The Customer</h3>
+                                <p>The first meeting is very import to form contact and discuss the main ideas of the project.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-7 step_pic col-md-4">
+                    <div class="item">
+                        <img src="/Amos_HW_4_pic/home-image-8.svg" alt="step_1_pic">
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
 
