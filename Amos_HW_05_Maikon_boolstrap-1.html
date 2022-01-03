@@ -86,6 +86,15 @@
         height: 400px;
         overflow: hidden;
       }
+      .pichover{
+        height: 400px;
+        overflow: hidden;
+        opacity: 0;
+        transition: .2s;
+      }
+      .pjh:hover .pichover {
+        opacity: 1;
+      }
       .sub_e{
         width: 500px;
       }
@@ -473,30 +482,30 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-12 col-md-4 mb-5">
-              <div class="item position-relative w-100 pjh" >
+            <div class="col-12 col-md-4 mb-5 pjh">
+              <div class="item position-relative w-100 " >
                 <img src="/Amos_HW_4_pic/project-1.jpg" alt="pj1" class="img-fluid w-100">
-                <div class="pichover position-absolute  top-50 text-white d-none w-100 bg-success">
-                  <h3 class="mb-5">Minimal Creative "Impuls"</h3>
-                  <a href="#" class="text-decoration-none text-white mt-5">VIEW SITE</a>
+                <div class="pichover position-absolute  top-0 text-white  w-100 bgcolor p-3 d-flex flex-wrap align-content-between">
+                  <h3 class=" mt-5 fs-1 w-100">Minimal Creative "Impuls"</h3>
+                  <a href="#" class="text-decoration-none text-white  mb-3 ">VIEW SITE</a>
                 </div>
               </div>
             </div>
-            <div class="col-12 col-md-4 mb-5">
-              <div class="item position-relative w-100 pjh" >
+            <div class="col-12 col-md-4 mb-5 pjh">
+              <div class="item position-relative w-100 " >
                 <img src="/Amos_HW_4_pic/project-2.jpg" alt="pj2" class="img-fluid w-100">
-                <div class="pichover position-absolute  top-50 text-white d-none w-100 bg-success">
-                  <h3 class="mb-5">Minimal Creative "Impuls"</h3>
-                  <a href="#" class="text-decoration-none text-white mt-5">VIEW SITE</a>
+                <div class="pichover position-absolute top-0  text-white  w-100 bgcolor p-3 d-flex flex-wrap align-content-between">
+                  <h3 class=" mt-5 fs-1 w-100">Travel Company "Tour Up"</h3>
+                  <a href="#" class="text-decoration-none text-white  mb-3 ">VIEW SITE</a>
                 </div>
               </div>
             </div>
-            <div class="col-12 col-md-4 mb-5">
-              <div class="item position-relative w-100 pjh" >
+            <div class="col-12 col-md-4 mb-5 pjh">
+              <div class="item position-relative w-100 " >
                 <img src="/Amos_HW_4_pic/project-3.jpg" alt="pj3" class="img-fluid w-100">
-                <div class="pichover position-absolute  top-50 text-white d-none w-100 bg-success">
-                  <h3 class="mb-5">Minimal Creative "Impuls"</h3>
-                  <a href="#" class="text-decoration-none text-white mt-5">VIEW SITE</a>
+                <div class="pichover position-absolute  top-0 text-white  w-100 bgcolor p-3 d-flex flex-wrap align-content-between ">
+                  <h3 class=" mt-5 fs-1 w-100 ">Restaurant Pizza "Little Italy"</h3>
+                  <a href="#" class="text-decoration-none text-white  mb-3">VIEW SITE</a>
                 </div>
               </div>
             </div>
@@ -553,7 +562,6 @@
             </div>
           </div>
         </section>
-
         <footer class="container-xxl mb-5 mt-5">
           <div class="row">
             <div class="col-12 col-md-3">
@@ -562,8 +570,7 @@
                   <a href="#">
                     <img src="/Amos_HW_4_pic/logo.webp" alt="logofooter" class="mb-5 mt-5">
                   </a>
-                  
-                </div>
+                  </div>
                 <div class="col-12">
                   <span class="textcolor">Phone:</span>
                   <address class="d-inline"> <a href="tel:" class="text-decoration-none text-muted">+1 (045)-224-12-67</a></address>
@@ -663,22 +670,19 @@
                 </div>
               </div>
             </div>
-            
-              <div class="row ">
-                <div class="col-12 mt-5 col-md-6 text-muted ">&copy;2018 Wordpress Maikon. All Rights Reserved. | Theme design by <a href="#" class="text-decoration-none textcolor">Zemez</a>
-                </div>
-              
-                <div class="col-12 d-flex justify-content-md-end mt-5 col-md-4 copyms " >
-                  <a href="#" class="text-decoration-none text-muted ">Privacy & Policy</a>
-                  <a href="#" class="text-decoration-none text-muted ms-5 ">FAQ</a>
-                </div>
-              </div>
+          </div>
+          <div class="row ">
+            <div class="col-12 mt-5 col-md-6 text-muted ">&copy;2018 Wordpress Maikon. All Rights Reserved. | Theme design by <a href="#" class="text-decoration-none textcolor">Zemez</a>
+            </div>
+            <div class="col-12 d-flex justify-content-md-end mt-5 col-md-4 copyms " >
+              <a href="#" class="text-decoration-none text-muted ">Privacy & Policy</a>
+              <a href="#" class="text-decoration-none text-muted ms-5 ">FAQ</a>
             </div>
           </div>
-        </footer>
-  </div>
-  
-    
+        </div>
+      </div>
+    </footer>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
