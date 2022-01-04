@@ -1,703 +1,748 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="reset.css" />
 
-    <!-- Bootstrap CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-    <style>
-      body{
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        text-align: left;
-        
-        
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="reset.css" />
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+  <style>
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      text-align: left;
+
+
+    }
+
+    .container-xxl {
+      margin: auto;
+      padding: 1em;
+      box-sizing: border-box;
+      /* max-width: 1200px; */
+    }
+
+    .sv-color {
+      background-color: #F7F8F9;
+    }
+
+    .orderser:hover {
+      background-color: #1FDE82;
+      border: none;
+
+    }
+
+    @media screen and (max-width:767px) {
+      .icongreen {
+        width: 82px;
       }
-      .container-xxl{
-        margin: auto;
-        padding: 1em;
-        box-sizing: border-box;
-        /* max-width: 1200px; */
+    }
+
+    @media screen and (min-width:768px) {
+      .icongreen {
+        width: 82px;
       }
-      .sv-color{
-        background-color: #F7F8F9;
-      }
-      .orderser:hover{
-        background-color:#1FDE82 ;
-        border:none;
-        
-      }
-      @media screen and (max-width:767px) {
-        .icongreen{
-          width: 82px;
-        }
-      }
-      @media screen and  (min-width:768px)
-      {
-        .icongreen{
-          width: 82px;
-        }
-        .steps-gap{
+
+      .steps-gap {
         margin-left: 8.333333%;
-        }
-        .step-gap-odd{
+      }
+
+      .step-gap-odd {
         margin-right: 8.333333%;
-        }
-        .reasongap{
-          margin-right: 16.666666%;
-        }
-        .copyms{
-          margin-left: 16.666666%;
-        } 
-      }
-      .reasontext-color{
-        background-color: #3F81FF;
-      }
-      @media screen and (max-width:991px) {
-        .subvis{
-          display: none;
-        }
-      }
-      @media screen and (min-width:992px) {
-                
-        .subvis{
-          display: block;
-        }
-      }
-      
-      @media screen and (max-width:1023px) {
-        .vis{
-          display:  none;
-          }
-
       }
 
-      .ml-100{
-        margin-left: -100%;
-      }
-      .bgcolor{
-        background-color: #1FDE82;
-      }
-      .textcolor{
-        color: #1FDE82;
-      }
-      .left_75{
-        left: 75%;
-      }
-      .pjh{
-        height: 400px;
-        overflow: hidden;
-      }
-      .pichover{
-        height: 400px;
-        overflow: hidden;
-        opacity: 0;
-        transition: .2s;
-      }
-      .pjh:hover .pichover {
-        opacity: 1;
-      }
-      .sub_e{
-        width: 500px;
-      }
-      .fixtop{
-        padding-top: 120px;
-      }
-      .z-index-5{
-        z-index: 5;
+      .reasongap {
+        margin-right: 16.666666%;
       }
 
-      .icon-1{
-        font-size: 2em;
-        width: 50px;
-        height: 50px;
-        display:flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 50%;
-        transition: .3s;
+      .copyms {
+        margin-left: 16.666666%;
       }
-      .footer_icon a:hover i{
-        background-color:#1FDE82 ;
-      }
-      .minh{
-        min-height: 100px;
-      }
-    </style>
-    <title>Maikon</title>
-  </head>
-  <!-- 在視窗寬度小於516px時會出現nav(min) -->
-  <body>
-    <header class="position-relative fixtop  w-100">
-      <nav class=" navbar navbar-expand-md navbar-light  mb-4 position-fixed top-0 start-0 end-0 z-index-5 bg-white container-xxl">
-          <a class="navbar-brand me-5" href="#"><h1><img src="/Amos_HW_4_pic/logo.webp" alt="logo"></h1></a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
-              <li class="nav-item ">
-                <a class="nav-link  border-bottom"  href="#">Home</a>
-              </li>
-              <li class="nav-item ">
-                <a class="nav-link" href="#">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Services</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Team</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Case studio</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Contacts</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link border rounded-3 ms-5 subvis fw-bolder text-uppercase" href="#">Subscribe</a>
-              </li>
-          </div>
-      </nav>
-    </header>
+    }
 
-    <div class="main w-100">
-      <section class="success container-xxl mb-4">
-        <div class="row">
-          <div class="col-12 col-md-6">
-            <div class="row">
-              <div class="col-12 mb-4">
-                <h2 class="fs-1">Our creativity is your success</h2>
-              </div>
-              <div class="col-12 mb-4">
-                <p>We break all boundaries if they happen on our way of project’s development!</p>
-              </div>
-              <div class="col-12 mb-4">
-                <a href="#" class="btn btn-outline-success border-0 bgcolor text-white text-uppercase shadow ">Learn More</a>
-                <a href="#" class="btn btn-outline-dark ms-3 border-0 text-uppercase">Watch Video</a>
-                <a href="#" class="btn btn-outline-dark ms-1 rounded-circle "><i class="fas fa-play "></i></a>
-              </div>
+    .reasontext-color {
+      background-color: #3F81FF;
+    }
+
+    @media screen and (max-width:991px) {
+      .subvis {
+        display: none;
+      }
+    }
+
+    @media screen and (min-width:992px) {
+
+      .subvis {
+        display: block;
+      }
+    }
+
+    @media screen and (max-width:1023px) {
+      .vis {
+        display: none;
+      }
+
+    }
+
+    .ml-100 {
+      margin-left: -100%;
+    }
+
+    .bgcolor {
+      background-color: #1FDE82;
+    }
+
+    .textcolor {
+      color: #1FDE82;
+    }
+
+    .left_75 {
+      left: 75%;
+    }
+
+    .pjh {
+      height: 400px;
+      overflow: hidden;
+    }
+
+    .pichover {
+      height: 400px;
+      overflow: hidden;
+      opacity: 0;
+      transition: .2s;
+    }
+
+    .pjh:hover .pichover {
+      opacity: 1;
+    }
+
+    .sub_e {
+      max-width: 500px;
+    }
+
+    .fixtop {
+      padding-top: 120px;
+    }
+
+    .z-index-5 {
+      z-index: 5;
+    }
+
+    .icon-1 {
+      font-size: 2em;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      transition: .3s;
+    }
+
+    .footer_icon a:hover i {
+      background-color: #1FDE82;
+    }
+
+    .minh {
+      min-height: 100px;
+    }
+  </style>
+  <title>Maikon</title>
+</head>
+<!-- 在視窗寬度小於516px時會出現nav(min) -->
+
+<body>
+  <header class="position-relative fixtop  w-100">
+    <nav
+      class=" navbar navbar-expand-md navbar-light  mb-4 position-fixed top-0 start-0 end-0 z-index-5 bg-white container-xxl">
+      <a class="navbar-brand me-5" href="#">
+        <h1><img src="/Amos_HW_4_pic/logo.webp" alt="logo"></h1>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
+          <li class="nav-item ">
+            <a class="nav-link  border-bottom" href="#">Home</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Team</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Case studio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contacts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link border rounded-3 ms-5 subvis fw-bolder text-uppercase" href="#">Subscribe</a>
+          </li>
+      </div>
+    </nav>
+  </header>
+
+  <div class="main w-100">
+    <section class="success container-xxl mb-4">
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <div class="row">
+            <div class="col-12 mb-4">
+              <h2 class="fs-1">Our creativity is your success</h2>
             </div>
-          </div>
-          <div class="col-12 col-md-6">
-            <div class="item ">
-              <img src="/Amos_HW_4_pic/01.svg" alt="" class="img-fliud w-100">
+            <div class="col-12 mb-4">
+              <p>We break all boundaries if they happen on our way of project’s development!</p>
+            </div>
+            <div class="col-12 mb-4">
+              <a href="#" class="btn btn-outline-success border-0 bgcolor text-white text-uppercase shadow ">Learn
+                More</a>
+              <a href="#" class="btn btn-outline-dark ms-3 border-0 text-uppercase">Watch Video</a>
+              <a href="#" class="btn btn-outline-dark ms-1 rounded-circle "><i class="fas fa-play "></i></a>
             </div>
           </div>
         </div>
-      </section>
+        <div class="col-12 col-md-6">
+          <div class="item ">
+            <img src="/Amos_HW_4_pic/01.svg" alt="" class="img-fliud w-100">
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <section class="passion container-xxl ">
-        <div class="row flex-column-reverse flex-md-row-reverse">
-          <div class="col-12 col-md-6">
-            <div class="row">
-              <div class="col-12 mb-4">
-                <h2 class="fs-1">Creative challenges are our passion</h2>
-              </div>
-              <div class="col-12 mb-4">
-                <p>Our team of designers and developers work closely together to build a creative and positive working environment. Functionality is as important to us as aesthetics.</p>
-              </div>
-              <div class="col-12 mb-4 ">
-                <a href="#" class="btn btn-outline-success border-0 bgcolor text-white text-uppercase shadow p-2">About Us</a>
-                <a href="#" class="btn btn-outline-dark ms-3 text-uppercase shadow">Contact Us</a>
-                
-              </div>
+    <section class="passion container-xxl ">
+      <div class="row flex-column-reverse flex-md-row-reverse">
+        <div class="col-12 col-md-6">
+          <div class="row">
+            <div class="col-12 mb-4">
+              <h2 class="fs-1">Creative challenges are our passion</h2>
+            </div>
+            <div class="col-12 mb-4">
+              <p>Our team of designers and developers work closely together to build a creative and positive working
+                environment. Functionality is as important to us as aesthetics.</p>
+            </div>
+            <div class="col-12 mb-4 ">
+              <a href="#" class="btn btn-outline-success border-0 bgcolor text-white text-uppercase shadow p-2">About
+                Us</a>
+              <a href="#" class="btn btn-outline-dark ms-3 text-uppercase shadow">Contact Us</a>
+
             </div>
           </div>
-          <div class="col-12 col-md-6">
-            <div class="item">
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="item">
             <img src="/Amos_HW_4_pic/02.webp" alt="passionpic" class="img-fluid w-100">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="service container-xxl mb-4 sv-color p-4">
+      <div class="row ">
+        <div class="col-12 mt-5 mb-5">
+          <h2>We provide a wide range of creative services</h2>
+        </div>
+        <div class="col-12 col-md-4 p-3 ">
+          <div class="card shadow p-5  h-100 ">
+            <img src="/Amos_HW_4_pic/icon-1.svg" alt="sv-1" class="img-fluid icongreen mb-4">
+            <h2 class="fs-4 pb-4">Web Design & Brending</h2>
+            <p class="fs-6 text-muted">A great brand combines design and conveys company’s value messaging to evoke
+              emotion and drive strategy.</p>
+            <a href="#" class="text-decoration-none text-muted mt-4 fw-bolder mt-auto">READ MORE</a>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4 p-3">
+          <div class="card shadow p-5 h-100">
+            <img src="/Amos_HW_4_pic/icon-2.svg" alt="sv-2" class="img-fluid icongreen mb-4">
+            <h2 class="fs-4 pb-4">Graphic Design</h2>
+            <p class="fs-6  text-muted">Rich experience plus unlimited imagination create our successful service
+              discovered by clients.</p>
+            <a href="#" class="text-decoration-none text-muted mt-4 fw-bolder mt-auto">READ MORE</a>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4 p-3">
+          <div class="card shadow p-5 h-100">
+            <img src="/Amos_HW_4_pic/icon-3.svg" alt="sv-3" class="img-fluid icongreen mb-4">
+            <h2 class="fs-4 pb-4">Video Production</h2>
+            <p class="fs-6  text-muted">Creating and handling professional video is our strong point. It plays major
+              role in your digital business strategy.</p>
+            <a href="#" class="text-decoration-none text-muted mt-4 fw-bolder mt-auto">READ MORE</a>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4 p-3">
+          <div class="card shadow p-5  h-100">
+            <img src="/Amos_HW_4_pic/icon-4.svg" alt="sv-4" class="img-fluid icongreen mb-4">
+            <h2 class="fs-4 pb-4">Digital Marketing</h2>
+            <p class="fs-6  text-muted">We do collateral design, interactive design, hoarding, signage, presentation
+              centres, and more</p>
+            <a href="#" class="text-decoration-none text-muted mt-4 fw-bolder mt-auto">READ MORE</a>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4 p-3">
+          <div class="card shadow p-5  h-100">
+            <img src="/Amos_HW_4_pic/icon-5.svg" alt="sv-5" class="img-fluid icongreen mb-4">
+            <h2 class="fs-4 pb-4">SEO</h2>
+            <p class="fs-6  text-muted">We provide everything your site needs to perform at it’s highest capabilities on
+              the major search engines.</p>
+            <a href="#" class="text-decoration-none text-muted mt-4 fw-bolder mt-auto">READ MORE</a>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4 p-3">
+          <div class="card shadow p-5  h-100">
+            <img src="/Amos_HW_4_pic/icon-6.svg" alt="sv-6" class="img-fluid icongreen mb-4">
+            <h2 class="fs-4 pb-4">Infographics</h2>
+            <p class="fs-6  text-muted">Turn your data into captivating artwork that will keep your audience engaged.
+              Our team can help you with it.</p>
+            <a href="#" class="text-decoration-none text-muted mt-4 fw-bolder mt-auto">READ MORE</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="contactus container-xxl mb-4">
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <div class="row">
+            <div class="col-12 mb-4">
+              <h2 class="fs-1">If you have any questions, please contact us</h2>
+            </div>
+            <div class="col-12 mb-4">
+              <p>We break all boundaries if they happen on our way of project’s development!</p>
+            </div>
+            <div class="col-12 mb-4">
+              <a href="#" class="btn btn-outline-success border-0 bgcolor text-white text-uppercase shadow ">Contact
+                Us</a>
+              <a href="#" class="btn btn-outline-dark ms-3 text-uppercase shadow">Subscribe</a>
             </div>
           </div>
         </div>
-      </section>
-
-      <section class="service container-xxl mb-4 sv-color p-4">
-        <div class="row ">
-          <div class="col-12 mt-5 mb-5">
-            <h2>We provide a wide range of creative services</h2>
-          </div>
-          <div class="col-12 col-md-4 p-3 ">
-            <div class="card shadow p-5  h-100 ">
-              <img src="/Amos_HW_4_pic/icon-1.svg" alt="sv-1" class="img-fluid icongreen mb-4">
-              <h2 class="fs-4 pb-4" >Web Design & Brending</h2>
-              <p class="fs-6 text-muted">A great brand combines design and conveys company’s value messaging to evoke emotion and drive strategy.</p>
-              <a href="#" class="text-decoration-none text-muted mt-4 fw-bolder mt-auto">READ MORE</a>
-            </div>
-          </div>
-          
-          <div class="col-12 col-md-4 p-3">
-            <div class="card shadow p-5 h-100">
-              <img src="/Amos_HW_4_pic/icon-2.svg" alt="sv-2" class="img-fluid icongreen mb-4">
-              <h2 class="fs-4 pb-4" >Graphic Design</h2>
-              <p class="fs-6  text-muted">Rich experience plus unlimited imagination create our successful service discovered by clients.</p>
-              <a href="#" class="text-decoration-none text-muted mt-4 fw-bolder mt-auto">READ MORE</a>
-            </div>
-          </div>
-
-          <div class="col-12 col-md-4 p-3">
-            <div class="card shadow p-5 h-100">
-              <img src="/Amos_HW_4_pic/icon-3.svg" alt="sv-3" class="img-fluid icongreen mb-4">
-              <h2 class="fs-4 pb-4">Video Production</h2>
-              <p class="fs-6  text-muted">Creating and handling professional video is our strong point. It plays major role in your digital business strategy.</p>
-              <a href="#" class="text-decoration-none text-muted mt-4 fw-bolder mt-auto">READ MORE</a>
-            </div>
-          </div>
-
-          <div class="col-12 col-md-4 p-3">
-            <div class="card shadow p-5  h-100">
-              <img src="/Amos_HW_4_pic/icon-4.svg" alt="sv-4" class="img-fluid icongreen mb-4">
-              <h2 class="fs-4 pb-4">Digital Marketing</h2>
-              <p class="fs-6  text-muted">We do collateral design, interactive design, hoarding, signage, presentation centres, and more</p>
-              <a href="#" class="text-decoration-none text-muted mt-4 fw-bolder mt-auto">READ MORE</a>
-            </div>
-          </div>
-
-          <div class="col-12 col-md-4 p-3">
-            <div class="card shadow p-5  h-100">
-              <img src="/Amos_HW_4_pic/icon-5.svg" alt="sv-5" class="img-fluid icongreen mb-4">
-              <h2 class="fs-4 pb-4">SEO</h2>
-              <p class="fs-6  text-muted">We provide everything your site needs to perform at it’s highest capabilities on the major search engines.</p>
-              <a href="#" class="text-decoration-none text-muted mt-4 fw-bolder mt-auto">READ MORE</a>
-            </div>
-          </div>
-
-          <div class="col-12 col-md-4 p-3">
-            <div class="card shadow p-5  h-100">
-              <img src="/Amos_HW_4_pic/icon-6.svg" alt="sv-6" class="img-fluid icongreen mb-4">
-              <h2 class="fs-4 pb-4">Infographics</h2>
-              <p class="fs-6  text-muted">Turn your data into captivating artwork that will keep your audience engaged. Our team can help you with it.</p>
-              <a href="#" class="text-decoration-none text-muted mt-4 fw-bolder mt-auto">READ MORE</a>
-            </div>
+        <div class="col-12 col-md-6">
+          <div class="item">
+            <img src="/Amos_HW_4_pic/home-image-3.svg" alt="CONTACTUS" class="img-fliud w-100">
           </div>
         </div>
-      </section>
-      <section class="contactus container-xxl mb-4">
-        <div class="row">
-          <div class="col-12 col-md-6">
-            <div class="row">
-              <div class="col-12 mb-4">
-                <h2 class="fs-1">If you have any questions, please contact us</h2>
+      </div>
+    </section>
+    <section class="container-xxl section_reason bg-primary text-white p-5">
+      <div class="row reason">
+        <div class="col-12 reason_statistics col-md-6 ">
+          <div class="row ">
+            <div class="col-12 col-md-6 p-4 ">
+              <div class="item reasontext-color p-2  rounded-3 h-100 ">
+                <span class="fs-1 fw-bolder d-block ms-3 mb-3 ">1880+</span>
+                <p class="text-white  ms-3 mb-3">A large team of the best specialists. large team of the best large team
+                  of the best large team of the best</p>
               </div>
-              <div class="col-12 mb-4">
-                <p>We break all boundaries if they happen on our way of project’s development!</p>
+            </div>
+            <div class="col-12 col-md-6 p-4">
+              <div class="item text-white reasontext-color p-2 rounded-3 h-100">
+                <span class="fs-1 fw-bolder d-block text-jutify ms-3 mb-3">56</span>
+                <p class="text-white ms-3 mb-3">A large team of the best specialists.</p>
               </div>
-              <div class="col-12 mb-4">
-                <a href="#" class="btn btn-outline-success border-0 bgcolor text-white text-uppercase shadow ">Contact Us</a>
-                <a href="#" class="btn btn-outline-dark ms-3 text-uppercase shadow">Subscribe</a>
+            </div>
+            <div class="col-12 col-md-6 p-4">
+              <div class="item reasontext-color p-2 rounded-3 h-100">
+                <span class="fs-1 fw-bolder d-block ms-3 mb-3">2000+</span>
+                <p class="text-white ms-3 mb-3">A large team of the best specialists.</p>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 p-4">
+              <div class="item reasontext-color p-2 rounded-3 h100 ">
+                <span class="fs-1 fw-bolder d-block ms-3 mb-3">100%</span>
+                <p class="text-white ms-3 mb-3">A large team of the best specialists.</p>
               </div>
             </div>
           </div>
-          <div class="col-12 col-md-6">
-            <div class="item">
-              <img src="/Amos_HW_4_pic/home-image-3.svg" alt="CONTACTUS" class="img-fliud w-100">
+        </div>
+        <div class="col-12 reason_txt col-md-4 p-4 m-auto reasongap">
+          <div class="item">
+            <h2 class="mb-4 fs-1">Why choose our studio for your projects?</h2>
+            <p class="text-white text-start mb-4 lh-lg">We are a command of professional and enthusiastic people, who
+              like what they do and are alwin the process of growing and improving their skills.</p>
+            <div class="btn btn-outline-light orderser">
+              <a href="#" class="text-white text-decoration-none orderser text-uppercase">Order Service</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class=" container-xxl section_steps">
+      <div class="row steps_title">
+        <div class="col-12 col-md-12">
+          <div class="item my-5">
+            <h2 class="fs-1">Steps of our work</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="row step_1 flex-md-row-reverse step-gap-odd">
+        <div class="col-12 col-md-7 d-flex ">
+          <div class="row align-items-center">
+            <div class="col-12 col-md-3  ">
+              <div class="item number  ms-md-5 position-relative ">
+                <img src="/Amos_HW_4_pic/number-01.svg" alt="number-01" class="mb-3 img-fluid">
+                <img src="/Amos_HW_4_pic/arrow-1.svg" alt="arrow1" class=" vis position-absolute end-100 top-100 ">
+              </div>
+            </div>
+            <div class="col-12 col-md-9 steps_txt ">
+              <div class="item mb-4 ">
+                <h3 class="mt-4">Meeting With The Customer</h3>
+                <p>The first meeting is very import to form contact and discuss the main ideas of the project.</p>
+              </div>
             </div>
           </div>
         </div>
-      </section>
-      <section class="container-xxl section_reason bg-primary text-white p-5">
-        <div class="row reason">
-            <div class="col-12 reason_statistics col-md-6 ">
-                <div class="row ">
-                    <div class="col-12 col-md-6 p-4 ">
-                        <div class="item reasontext-color p-2  rounded-3 h-100 ">
-                            <span class="fs-1 fw-bolder d-block ms-3 mb-3 ">1880+</span>
-                            <p class="text-white  ms-3 mb-3">A large team of the best specialists. large team of the best large team of the best large team of the best</p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 p-4">
-                        <div class="item text-white reasontext-color p-2 rounded-3 h-100">
-                            <span class="fs-1 fw-bolder d-block text-jutify ms-3 mb-3">56</span>
-                            <p class="text-white ms-3 mb-3">A large team of the best specialists.</p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 p-4">
-                        <div class="item reasontext-color p-2 rounded-3 h-100">
-                            <span class="fs-1 fw-bolder d-block ms-3 mb-3">2000+</span>
-                            <p class="text-white ms-3 mb-3" >A large team of the best specialists.</p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 p-4">
-                        <div class="item reasontext-color p-2 rounded-3 h100 ">
-                            <span class="fs-1 fw-bolder d-block ms-3 mb-3">100%</span>
-                            <p class="text-white ms-3 mb-3">A large team of the best specialists.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 reason_txt col-md-4 p-4 m-auto reasongap">
-                <div class="item">
-                    <h2 class="mb-4 fs-1">Why choose our studio for your projects?</h2>
-                    <p class="text-white text-start mb-4 lh-lg">We are a command of professional and enthusiastic people, who like what they do and are alwin the process of growing and improving their skills.</p>
-                    <div class="btn btn-outline-light orderser">
-                        <a href="#" class="text-white text-decoration-none orderser text-uppercase">Order Service</a>
-                    </div>
-                    
-                </div>
-            </div>
+        <div class="col-7 step_pic col-md-4 text-md-end">
+          <div class="item">
+            <img src="/Amos_HW_4_pic/home-image-4.svg" alt="step_1_pic" class="mb-4 img-fluid">
+          </div>
         </div>
-      </section>
-      <section class=" container-xxl section_steps">
-        <div class="row steps_title">
-          <div class="col-12 col-md-12">
-            <div class="item my-5">
-              <h2 class="fs-1">Steps of our work</h2>
+      </div>
+
+      <div class="row step_2 steps-gap">
+        <div class="col-12 col-md-7 d-flex">
+          <div class="row align-items-center">
+            <div class="col-12 col-md-3">
+              <div class="item number ms-md-5 position-relative">
+                <img src="/Amos_HW_4_pic/number-02.svg" alt="number-02" class="mb-3 img-fluid">
+                <img src="/Amos_HW_4_pic/arrow-2.svg" alt="arrow1" class=" vis position-absolute start-50 top-100">
+              </div>
+            </div>
+            <div class="col-12 col-md-9 steps_txt">
+              <div class="item">
+                <h3 class="mt-4">Meeting With The Customer</h3>
+                <p>The first meeting is very import to form contact and discuss the main ideas of the project.</p>
+              </div>
             </div>
           </div>
         </div>
-
-        <div class="row step_1 flex-md-row-reverse step-gap-odd">
-            <div class="col-12 col-md-7 d-flex ">
-                <div class="row align-items-center">
-                    <div class="col-12 col-md-3  ">
-                        <div class="item number  ms-md-5 position-relative ">
-                            <img src="/Amos_HW_4_pic/number-01.svg" alt="number-01" class="mb-3 img-fluid">
-                            <img src="/Amos_HW_4_pic/arrow-1.svg" alt="arrow1" class=" vis position-absolute end-100 top-100 ">
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-9 steps_txt ">
-                        <div class="item mb-4 ">
-                            <h3 class="mt-4">Meeting With The Customer</h3>
-                            <p>The first meeting is very import to form contact and discuss the main ideas of the project.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-7 step_pic col-md-4 text-md-end">
-                <div class="item">
-                    <img src="/Amos_HW_4_pic/home-image-4.svg" alt="step_1_pic" class="mb-4 img-fluid">
-                </div>
-            </div>
+        <div class="col-7 step_pic col-md-4 text-md-center">
+          <div class="item">
+            <img src="/Amos_HW_4_pic/home-image-5.svg" alt="step_1_pic" class="mb-4 img-fluid">
+          </div>
         </div>
+      </div>
 
-        <div class="row step_2 steps-gap">
-            <div class="col-12 col-md-7 d-flex">
-                <div class="row align-items-center">
-                    <div class="col-12 col-md-3">
-                        <div class="item number ms-md-5 position-relative">
-                            <img src="/Amos_HW_4_pic/number-02.svg" alt="number-02" class="mb-3 img-fluid">
-                            <img src="/Amos_HW_4_pic/arrow-2.svg" alt="arrow1" class=" vis position-absolute start-50 top-100">
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-9 steps_txt">
-                        <div class="item">
-                            <h3 class="mt-4">Meeting With The Customer</h3>
-                            <p>The first meeting is very import to form contact and discuss the main ideas of the project.</p>
-                        </div>
-                    </div>
-                </div>
+      <div class="row step_5 flex-md-row-reverse step-gap-odd">
+        <div class="col-12 col-md-7 d-flex ">
+          <div class="row align-items-center">
+            <div class="col-12 col-md-3">
+              <div class="item number ms-md-5 position-relative">
+                <img src="/Amos_HW_4_pic/number-03.svg" alt="number-03" class="mb-3 img-fluid">
+                <img src="/Amos_HW_4_pic/arrow-3.svg" alt="arrow1" class=" vis position-absolute end-100  top-100">
+              </div>
             </div>
-            <div class="col-7 step_pic col-md-4 text-md-center">
-                <div class="item">
-                    <img src="/Amos_HW_4_pic/home-image-5.svg" alt="step_1_pic" class="mb-4 img-fluid">
-                </div>
+            <div class="col-12 col-md-9 steps_txt">
+              <div class="item">
+                <h3 class="mt-4">Meeting With The Customer</h3>
+                <p>The first meeting is very import to form contact and discuss the main ideas of the project.</p>
+              </div>
             </div>
+          </div>
         </div>
+        <div class="col-7 step_pic col-md-4 text-md-end">
+          <div class="item">
+            <img src="/Amos_HW_4_pic/home-image-6.svg" alt="step_1_pic" class="mb-4 img-fluid">
+          </div>
+        </div>
+      </div>
 
-        <div class="row step_5 flex-md-row-reverse step-gap-odd">
-            <div class="col-12 col-md-7 d-flex ">
-                <div class="row align-items-center">
-                    <div class="col-12 col-md-3">
-                        <div class="item number ms-md-5 position-relative">
-                            <img src="/Amos_HW_4_pic/number-03.svg" alt="number-03" class="mb-3 img-fluid">
-                            <img src="/Amos_HW_4_pic/arrow-3.svg" alt="arrow1" class=" vis position-absolute end-100  top-100">
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-9 steps_txt">
-                        <div class="item">
-                            <h3 class="mt-4">Meeting With The Customer</h3>
-                            <p>The first meeting is very import to form contact and discuss the main ideas of the project.</p>
-                        </div>
-                    </div>
-                </div>
+      <div class="row step_4 steps-gap">
+        <div class="col-12 col-md-7 d-flex">
+          <div class="row align-items-center">
+            <div class="col-12 col-md-3 position-relative">
+              <div class="item number ms-md-5">
+                <img src="/Amos_HW_4_pic/number-04.svg" alt="number-04" class="mb-3 img-fluid">
+                <img src="/Amos_HW_4_pic/arrow-4.svg" alt="arrow1" class=" vis position-absolute left_75 top-100">
+              </div>
             </div>
-            <div class="col-7 step_pic col-md-4 text-md-end">
-                <div class="item">
-                    <img src="/Amos_HW_4_pic/home-image-6.svg" alt="step_1_pic" class="mb-4 img-fluid">
-                </div>
+            <div class="col-12 col-md-9 steps_txt">
+              <div class="item">
+                <h3 class="mt-4">Meeting With The Customer</h3>
+                <p>The first meeting is very import to form contact and discuss the main ideas of the project.</p>
+              </div>
             </div>
+          </div>
         </div>
+        <div class="col-7 step_pic col-md-4 ">
+          <div class="item">
+            <img src="/Amos_HW_4_pic/home-image-7.svg" alt="step_1_pic" class="mb-4 img-fluid">
+          </div>
+        </div>
+      </div>
 
-        <div class="row step_4 steps-gap">
-            <div class="col-12 col-md-7 d-flex">
-                <div class="row align-items-center">
-                    <div class="col-12 col-md-3 position-relative">
-                        <div class="item number ms-md-5">
-                            <img src="/Amos_HW_4_pic/number-04.svg" alt="number-04" class="mb-3 img-fluid">
-                            <img src="/Amos_HW_4_pic/arrow-4.svg" alt="arrow1" class=" vis position-absolute left_75 top-100">
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-9 steps_txt">
-                        <div class="item">
-                            <h3 class="mt-4">Meeting With The Customer</h3>
-                            <p>The first meeting is very import to form contact and discuss the main ideas of the project.</p>
-                        </div>
-                    </div>
-                </div>
+      <div class="row step_5 flex-md-row-reverse step-gap-odd">
+        <div class="col-12 col-md-7 d-flex ">
+          <div class="row align-items-center">
+            <div class="col-12 col-md-3">
+              <div class="item number ms-md-5">
+                <img src="/Amos_HW_4_pic/number-05.svg" alt="number-05" class="mb-3 img-fluid">
+              </div>
             </div>
-            <div class="col-7 step_pic col-md-4 ">
-                <div class="item">
-                    <img src="/Amos_HW_4_pic/home-image-7.svg" alt="step_1_pic" class="mb-4 img-fluid">
-                </div>
+            <div class="col-12 col-md-9 steps_txt">
+              <div class="item">
+                <h3 class="mt-4">Meeting With The Customer</h3>
+                <p>The first meeting is very import to form contact and discuss the main ideas of the project.</p>
+              </div>
             </div>
+          </div>
         </div>
+        <div class="col-7 step_pic col-md-4 text-md-end">
+          <div class="item">
+            <img src="/Amos_HW_4_pic/home-image-8.svg" alt="step_1_pic" class="mb-4">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="projects container-xxl sv-color mt-5 pt-5">
+      <div class="projects_title row-cols-1 mb-4 row-cols-md-2 ">
+        <div class="col-12">
+          <h2 class="mb-4 fs-1">Our team's work with Projects</h2>
+        </div>
+        <div class="col">
+          <a href="#" class="btn btn-outline-success mb-4 text-uppercase">All Projects</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-4 mb-5 pjh">
+          <div class="item position-relative w-100 ">
+            <img src="/Amos_HW_4_pic/project-1.jpg" alt="pj1" class="img-fluid w-100">
+            <div
+              class="pichover position-absolute  top-0 text-white  w-100 bgcolor p-3 d-flex flex-wrap align-content-between">
+              <h3 class=" mt-5 fs-1 w-100">Minimal Creative "Impuls"</h3>
+              <a href="#" class="text-decoration-none text-white  mb-3 ">VIEW SITE</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4 mb-5 pjh">
+          <div class="item position-relative w-100 ">
+            <img src="/Amos_HW_4_pic/project-2.jpg" alt="pj2" class="img-fluid w-100">
+            <div
+              class="pichover position-absolute top-0  text-white  w-100 bgcolor p-3 d-flex flex-wrap align-content-between">
+              <h3 class=" mt-5 fs-1 w-100">Travel Company "Tour Up"</h3>
+              <a href="#" class="text-decoration-none text-white  mb-3 ">VIEW SITE</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4 mb-5 pjh">
+          <div class="item position-relative w-100 ">
+            <img src="/Amos_HW_4_pic/project-3.jpg" alt="pj3" class="img-fluid w-100">
+            <div
+              class="pichover position-absolute  top-0 text-white  w-100 bgcolor p-3 d-flex flex-wrap align-content-between ">
+              <h3 class=" mt-5 fs-1 w-100 ">Restaurant Pizza "Little Italy"</h3>
+              <a href="#" class="text-decoration-none text-white  mb-3">VIEW SITE</a>
+            </div>
+          </div>
+        </div>
+    </section>
 
-        <div class="row step_5 flex-md-row-reverse step-gap-odd">
-            <div class="col-12 col-md-7 d-flex ">
-                <div class="row align-items-center">
-                    <div class="col-12 col-md-3">
-                        <div class="item number ms-md-5">
-                            <img src="/Amos_HW_4_pic/number-05.svg" alt="number-05" class="mb-3 img-fluid">
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-9 steps_txt">
-                        <div class="item">
-                            <h3 class="mt-4">Meeting With The Customer</h3>
-                            <p>The first meeting is very import to form contact and discuss the main ideas of the project.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-7 step_pic col-md-4 text-md-end">
-                <div class="item">
-                    <img src="/Amos_HW_4_pic/home-image-8.svg" alt="step_1_pic" class="mb-4">
-                </div>
-            </div>
+    <section class="signup container-xxl  mt-5 ">
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <div class="item">
+            <img src="/Amos_HW_4_pic/home-image-9.svg" alt="singup" class="img-fluid w-100">
+          </div>
         </div>
-        </section>
-        <section class="projects container-xxl sv-color mt-5 pt-5">
-          <div class="projects_title row-cols-1 mb-4 row-cols-md-2 ">
+        <div class="col-12 col-md-6">
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <h2 class="fs-1 mb-5 mt-5">
+                Sign up for our consultation
+              </h2>
+            </div>
             <div class="col-12">
-              <h2 class="mb-4 fs-1">Our team's work with Projects</h2>
+              <div class="input-group flex-nowrap">
+
+                <input type="text" class="form-control mb-4" placeholder="Name" aria-label="Username"
+                  aria-describedby="addon-wrapping">
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="input-group flex-nowrap">
+
+                <input type="text" class="form-control mb-4" placeholder="Email" aria-label="Username"
+                  aria-describedby="addon-wrapping">
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="input-group flex-nowrap ">
+
+                <input type="text" class="form-control mb-4 minh " placeholder="Message" aria-label="Username"
+                  aria-describedby="addon-wrapping">
+              </div>
             </div>
             <div class="col">
-              <a href="#" class="btn btn-outline-success mb-4 text-uppercase" >All Projects</a>
+              <div class="btn btn-success bgcolor border-0 mt-5 text-uppercase"><a href="#"
+                  class="text-decoration-none text-white">Send</a></div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-12 col-md-4 mb-5 pjh">
-              <div class="item position-relative w-100 " >
-                <img src="/Amos_HW_4_pic/project-1.jpg" alt="pj1" class="img-fluid w-100">
-                <div class="pichover position-absolute  top-0 text-white  w-100 bgcolor p-3 d-flex flex-wrap align-content-between">
-                  <h3 class=" mt-5 fs-1 w-100">Minimal Creative "Impuls"</h3>
-                  <a href="#" class="text-decoration-none text-white  mb-3 ">VIEW SITE</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-4 mb-5 pjh">
-              <div class="item position-relative w-100 " >
-                <img src="/Amos_HW_4_pic/project-2.jpg" alt="pj2" class="img-fluid w-100">
-                <div class="pichover position-absolute top-0  text-white  w-100 bgcolor p-3 d-flex flex-wrap align-content-between">
-                  <h3 class=" mt-5 fs-1 w-100">Travel Company "Tour Up"</h3>
-                  <a href="#" class="text-decoration-none text-white  mb-3 ">VIEW SITE</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-4 mb-5 pjh">
-              <div class="item position-relative w-100 " >
-                <img src="/Amos_HW_4_pic/project-3.jpg" alt="pj3" class="img-fluid w-100">
-                <div class="pichover position-absolute  top-0 text-white  w-100 bgcolor p-3 d-flex flex-wrap align-content-between ">
-                  <h3 class=" mt-5 fs-1 w-100 ">Restaurant Pizza "Little Italy"</h3>
-                  <a href="#" class="text-decoration-none text-white  mb-3">VIEW SITE</a>
-                </div>
-              </div>
-            </div>
-        </section>
-
-        <section class="signup container-xxl  mt-5 ">
-          <div class="row">
-            <div class="col-12 col-md-6">
-              <div class="item">
-                <img src="/Amos_HW_4_pic/home-image-9.svg" alt="singup" class="img-fluid w-100">
-              </div>
-            </div>
-            <div class="col-12 col-md-6">
-              <div class="row">
-                <div class="col-12 col-md-6">
-                  <h2 class="fs-1 mb-5 mt-5">
-                    Sign up for our consultation
-                  </h2>
-                </div>
-                <div class="col-12">
-                  <div class="input-group flex-nowrap">
-                    
-                    <input type="text" class="form-control mb-4" placeholder="Name" aria-label="Username" aria-describedby="addon-wrapping">
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="input-group flex-nowrap">
-                    
-                    <input type="text" class="form-control mb-4" placeholder="Email" aria-label="Username" aria-describedby="addon-wrapping">
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="input-group flex-nowrap ">
-                    
-                    <input type="text" class="form-control mb-4 minh " placeholder="Message" aria-label="Username" aria-describedby="addon-wrapping">
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="btn btn-success bgcolor border-0 mt-5 text-uppercase"><a href="#" class="text-decoration-none text-white">Send</a></div>
-                </div>
-            </div>
+        </div>
+    </section>
+    <section class="subscribe container-xxl mb-5">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="fs-1 text-center mb-3 mt-5 me-md-auto">Subscribe to our news and learn more</h2>
+        </div>
+        <div class="col-12">
+          <div class="input-group mb-3 mt-5 sub_e ms-md-auto me-md-auto me-auto">
+            <input type="text" class="form-control " placeholder="Recipient's username"
+              aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button class="btn btn-success bgcolor border-0 text-uppercase" type="button"
+              id="button-addon2">Subscribe</button>
           </div>
-        </section>
-        <section class="subscribe container-xxl mb-5">
+        </div>
+      </div>
+    </section>
+    <footer class="container-xxl mb-5 mt-5">
+      <div class="row">
+        <div class="col-12 col-md-3">
           <div class="row">
             <div class="col-12">
-              <h2 class="fs-1 text-center mb-3 mt-5 me-md-auto">Subscribe to our news and learn more</h2>
+              <a href="#">
+                <img src="/Amos_HW_4_pic/logo.webp" alt="logofooter" class="mb-5 mt-5">
+              </a>
             </div>
             <div class="col-12">
-              <div class="input-group mb-3 mt-5 sub_e ms-md-auto me-md-auto me-auto">
-                <input type="text" class="form-control " placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
-                <button class="btn btn-success bgcolor border-0 text-uppercase" type="button" id="button-addon2">Subscribe</button>
-              </div>
+              <span class="textcolor">Phone:</span>
+              <address class="d-inline"> <a href="tel:" class="text-decoration-none text-muted">+1 (045)-224-12-67</a>
+              </address>
+            </div>
+            <div class="col-12 mb-5">
+              <span class="textcolor">Mail:</span>
+              <address class="d-inline"><a href="address:" class="text-decoration-none text-muted"> ingo@gmail.com</a>
+              </address>
             </div>
           </div>
-        </section>
-        <footer class="container-xxl mb-5 mt-5">
+        </div>
+        <div class="col-12 col-md-3">
           <div class="row">
-            <div class="col-12 col-md-3">
-              <div class="row">
-                <div class="col-12">
-                  <a href="#">
-                    <img src="/Amos_HW_4_pic/logo.webp" alt="logofooter" class="mb-5 mt-5">
-                  </a>
-                  </div>
-                <div class="col-12">
-                  <span class="textcolor">Phone:</span>
-                  <address class="d-inline"> <a href="tel:" class="text-decoration-none text-muted">+1 (045)-224-12-67</a></address>
-                </div>
-                <div class="col-12 mb-5">
-                  <span class="textcolor">Mail:</span>
-                  <address class="d-inline"><a href="address:" class="text-decoration-none text-muted"> ingo@gmail.com</a></address>
-                </div>
-              </div>
+            <div class="col-12">
+              <h3 class="mb-5 mt-5">
+                Services
+              </h3>
             </div>
-            <div class="col-12 col-md-3">
-              <div class="row">
-                <div class="col-12">
-                  <h3 class="mb-5 mt-5">
-                    Services
-                  </h3>
-                </div>
-                <div class="col-12">
-                  <p >
-                    <a href="#" class="text-muted text-decoration-none" >Web design & brending</a>
-                  </p>
-                </div>
-                <div class="col-12">
-                  <p >
-                    <a href="#" class="text-muted text-decoration-none" >Full Optimization</a>
-                  </p>
-                </div>
-                <div class="col-12">
-                  <p >
-                    <a href="#" class="text-muted text-decoration-none" >Research & Strategy</a>
-                  </p>
-                </div>
-                <div class="col-12">
-                  <p >
-                    <a href="#" class="text-muted text-decoration-none" >Web development</a>
-                  </p>
-                </div>
-                <div class="col-12">
-                  <p >
-                    <a href="#" class="text-muted text-decoration-none" >Management & Marketing </a> 
-                  </p>
-                </div>
-                <div class="col-12">
-                  <p >
-                    <a href="#" class="text-muted text-decoration-none" >Free support</a>
-                  </p>
-                </div>
-              </div>
+            <div class="col-12">
+              <p>
+                <a href="#" class="text-muted text-decoration-none">Web design & brending</a>
+              </p>
             </div>
-
-            <div class="col-12 col-md-3">
-              <div class="row">
-                <div class="col-12">
-                  <h3 class="mb-5 mt-5">
-                    About Company
-                  </h3>
-                </div>
-                <div class="col-12">
-                  <p >
-                    <a href="#" class="text-muted text-decoration-none" >About us</a>
-                  </p>
-                </div>
-                <div class="col-12">
-                  <p >
-                    <a href="#" class="text-muted text-decoration-none" >Team</a>
-                  </p>
-                </div>
-                <div class="col-12">
-                  <p >
-                    <a href="#" class="text-muted text-decoration-none" >Case studio</a>
-                  </p>
-                </div>
-                <div class="col-12">
-                  <p >
-                    <a href="#" class="text-muted text-decoration-none" >Contacts</a>
-                  </p>
-                </div>
-              </div>
+            <div class="col-12">
+              <p>
+                <a href="#" class="text-muted text-decoration-none">Full Optimization</a>
+              </p>
             </div>
-            <div class="col-12 col-md-3">
-              <div class="row">
-                <div class="col-12">
-                  <h3 class="mb-5 mt-5 ">
-                    Our Social Networks
-                  </h3>
-                </div>
-                <div class="col-12">
-                  <p class="text-muted">
-                    Join us in the social networks and keep up on the latest news.
-                  </p>
-                  <div class="col-12 d-flex footer_icon">
-                    <a href="#" class="text-decoration-none"><img src="" alt=""><i class="fab fa-youtube-square  text-muted border me-3 icon-1 "></i></a>
-                    <a href="#" class="text-decoration-none"><img src="" alt=""><i class="fab fa-facebook-f  text-muted border me-3 icon-1"></i></a>
-                    <a href="#" class="text-decoration-none"><img src="" alt=""><i class="fab fa-instagram  text-muted border me-3 icon-1"></i></a>
-                    <a href="#" class="text-decoration-none"><img src="" alt=""><i class="fab fa-twitter-square  text-muted border me-3 icon-1"></i></a>
-                  </div>
-                </div>
-              </div>
+            <div class="col-12">
+              <p>
+                <a href="#" class="text-muted text-decoration-none">Research & Strategy</a>
+              </p>
+            </div>
+            <div class="col-12">
+              <p>
+                <a href="#" class="text-muted text-decoration-none">Web development</a>
+              </p>
+            </div>
+            <div class="col-12">
+              <p>
+                <a href="#" class="text-muted text-decoration-none">Management & Marketing </a>
+              </p>
+            </div>
+            <div class="col-12">
+              <p>
+                <a href="#" class="text-muted text-decoration-none">Free support</a>
+              </p>
             </div>
           </div>
-          <div class="row ">
-            <div class="col-12 mt-5 col-md-6 text-muted ">&copy;2018 Wordpress Maikon. All Rights Reserved. | Theme design by <a href="#" class="text-decoration-none textcolor">Zemez</a>
+        </div>
+
+        <div class="col-12 col-md-3">
+          <div class="row">
+            <div class="col-12">
+              <h3 class="mb-5 mt-5">
+                About Company
+              </h3>
             </div>
-            <div class="col-12 d-flex justify-content-md-end mt-5 col-md-4 copyms " >
-              <a href="#" class="text-decoration-none text-muted ">Privacy & Policy</a>
-              <a href="#" class="text-decoration-none text-muted ms-5 ">FAQ</a>
+            <div class="col-12">
+              <p>
+                <a href="#" class="text-muted text-decoration-none">About us</a>
+              </p>
+            </div>
+            <div class="col-12">
+              <p>
+                <a href="#" class="text-muted text-decoration-none">Team</a>
+              </p>
+            </div>
+            <div class="col-12">
+              <p>
+                <a href="#" class="text-muted text-decoration-none">Case studio</a>
+              </p>
+            </div>
+            <div class="col-12">
+              <p>
+                <a href="#" class="text-muted text-decoration-none">Contacts</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-3">
+          <div class="row">
+            <div class="col-12">
+              <h3 class="mb-5 mt-5 ">
+                Our Social Networks
+              </h3>
+            </div>
+            <div class="col-12">
+              <p class="text-muted">
+                Join us in the social networks and keep up on the latest news.
+              </p>
+              <div class="col-12 d-flex footer_icon">
+                <a href="#" class="text-decoration-none"><img src="" alt=""><i
+                    class="fab fa-youtube-square  text-muted border me-3 icon-1 "></i></a>
+                <a href="#" class="text-decoration-none"><img src="" alt=""><i
+                    class="fab fa-facebook-f  text-muted border me-3 icon-1"></i></a>
+                <a href="#" class="text-decoration-none"><img src="" alt=""><i
+                    class="fab fa-instagram  text-muted border me-3 icon-1"></i></a>
+                <a href="#" class="text-decoration-none"><img src="" alt=""><i
+                    class="fab fa-twitter-square  text-muted border me-3 icon-1"></i></a>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="row ">
+        <div class="col-12 mt-5 col-md-6 text-muted ">&copy;2018 Wordpress Maikon. All Rights Reserved. | Theme design
+          by <a href="#" class="text-decoration-none textcolor">Zemez</a>
+        </div>
+        <div class="col-12 d-flex justify-content-md-end mt-5 col-md-4 copyms ">
+          <a href="#" class="text-decoration-none text-muted ">Privacy & Policy</a>
+          <a href="#" class="text-decoration-none text-muted ms-5 ">FAQ</a>
+        </div>
+      </div>
     </footer>
+  </div>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+  </script>
+</body>
+
 </html>
