@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <style>
+        body{
+            background-color: #aaa;
+        }
+        .container{
+            text-align: center;
+        }
         img {
             box-sizing: border-box;
             border: 1px solid #aaa;
@@ -17,6 +23,8 @@
             background-color: salmon;
             width: 16.666666%;
             margin: auto;
+            margin-bottom: 50px;
+            padding: 20px;
         }
         img:active{
             position: fixed;
@@ -25,12 +33,12 @@
             left: 0;
             right: 0;
             margin: auto;
-            transform: scale(2.5);
+            transform: scale(1.5);
             transition: .3s;
             background: #39F7D2;
 
         }
-        .container{
+        #container{
             position: relative;
         }
         button{
@@ -40,14 +48,18 @@
 </head>
 
 <body>
-    <h1></h1>
-    <button id="btn2">全部.onclick</button>
-    <button id="btn3">全部.addEventListener</button>
-    <button id="plus">+1</button>
-    <button id="minus">-1</button>
-    <button id='reset' onclick="resetPokemon()">Reset</button>
+    <div class="container">
+
+    
+        <h1 class="my-4"></h1>
+        <button id="btn2" class="btn-outline-success">全部.onclick</button>
+        <button id="btn3" class="btn-outline-success">全部.addEventListener</button>
+        <button id="plus" class="btn-outline-success">+1</button>
+        <button id="minus" class="btn-outline-success">-1</button>
+        <button id='reset' onclick="resetPokemon()" class="btn-outline-danger">Reset</button>
 
     <div id='container' class="mt-5"></div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
@@ -64,7 +76,7 @@
 
         function setPokemon() {
             let h1 = document.getElementsByTagName('h1')[0];
-            h1.innerText = "Pokemon程式列表";
+            h1.innerText = "Pokemon圖鑑產生器";
             let filename = "001";
             let pathFile = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${filename}.png`;
             let pokemonImg = `<img src='${pathFile}'>`;
