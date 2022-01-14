@@ -1,0 +1,109 @@
+[
+    {
+        "type": "iPad Air",
+        "setpic": "/JavaScript_HW/apple.pic/ipad-air-mainpic-0.jfif",
+        "colors": [
+            {
+                "colorname": "太空灰色",
+                "colorsrc": "/JavaScript_HW/apple.pic/color-gray.png",
+                "mainsrc": "/JavaScript_HW/apple.pic/ipad-air-mainpic-1.png"
+            },
+            {
+                "colorname": "銀色",
+                "colorsrc": "/JavaScript_HW/apple.pic/color-silver.png",
+                "mainsrc": "/JavaScript_HW/apple.pic/ipad-air-mainpic-2.png"
+            },
+            {
+                "colorname": "綠色",
+                "colorsrc": "/JavaScript_HW/apple.pic/color-green.jfif",
+                "mainsrc": "/JavaScript_HW/apple.pic/ipad-air-mainpic-3.png"
+            },
+            {
+                "colorname": "玫瑰金色",
+                "colorsrc": "/JavaScript_HW/apple.pic/color-pink.jfif",
+                "mainsrc": "/JavaScript_HW/apple.pic/ipad-air-mainpic-4.png"
+            },
+            {
+                "colorname": "天藍色",
+                "colorsrc": "/JavaScript_HW/apple.pic/color-blue.png",
+                "mainsrc": "/JavaScript_HW/apple.pic/ipad-air-mainpic-5.png"
+            }
+        ],
+        "gbs": {
+            "64GB": 18900,
+            "256GB": 23900
+        },
+        "wifi": {
+            "titles": [
+                "Wi-Fi",
+                "Wi-Fi + 行動網路"
+            ],
+            "normal": 0,
+            "wifiplus": 4300
+        }
+    },
+    {
+        "type": "iPad",
+        "setpic": "/JavaScript_HW/apple.pic/ipad-mainpic-1.png",
+        "colors": [
+            {
+                "colorname": "太空灰色",
+                "colorsrc": "/JavaScript_HW/apple.pic/color-gray.png",
+                "mainsrc": "/JavaScript_HW/apple.pic/ipad-mainpic-1.png"
+            },
+            {
+                "colorname": "銀色",
+                "colorsrc": "/JavaScript_HW/apple.pic/color-silver.png",
+                "mainsrc": "/JavaScript_HW/apple.pic/ipad-mainpic-2.png"
+            }
+        ],
+        "gbs": {
+            "64GB": 10500,
+            "256GB": 15000
+        },
+        "wifi": {
+            "titles":["Wi-Fi","Wi-Fi + 行動網路"],
+            "normal": 0,
+            "wifiplus": 4000
+        }
+    },
+    {
+        "type": "iPad-mini",
+        "setpic": "/JavaScript_HW/apple.pic/ipad-mini-mainpic-0.jfif",
+        "colors": [
+            {
+                "colorname": "太空灰色",
+                "colorsrc": "/JavaScript_HW/apple.pic/color-gray.png",
+                "mainsrc": "/JavaScript_HW/apple.pic/ipad-mini-mainpic-1.png"
+            },
+            {
+                "colorname": "粉紅色",
+                "colorsrc": "/JavaScript_HW/apple.pic/color-pink.jfif",
+                "mainsrc": "/JavaScript_HW/apple.pic/ipad-mini-mainpic-2.png"
+            },
+            {
+                "colorname": "紫色",
+                "colorsrc": "/JavaScript_HW/apple.pic/color-purple.png",
+                "mainsrc": "/JavaScript_HW/apple.pic/ipad-mini-mainpic-3.png"
+            },
+            {
+                "colorname": "星光色",
+                "colorsrc": "/JavaScript_HW/apple.pic/color-star.png",
+                "mainsrc": "/JavaScript_HW/apple.pic/ipad-mini-mainpic-4.png"
+            }
+        ],
+        "gbs": {
+            "64GB": 14900,
+            "256GB": 19400
+        },
+        "wifi": {
+            "titles": [
+                "Wi-Fi",
+                "Wi-Fi + 行動網路"
+            ],
+            "normal": 0,
+            "wifiplus": 4500
+            
+        }
+    }
+]
