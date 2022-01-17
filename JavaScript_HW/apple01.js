@@ -149,7 +149,7 @@ function setPage(typenum) {
 
     //外觀標題
     const col12_outward = document.createElement('button')
-    col12_outward.setAttribute('class', 'col-12 border-0 text-start bg-white text-black')
+    col12_outward.setAttribute('class', 'col-12 col-md-12 border-0 text-start bg-white text-black')
     col12_outward.disabled =true
     const h2_outward = document.createElement('h2')
     h2_outward.setAttribute('id', 'h2_outward')
@@ -160,7 +160,7 @@ function setPage(typenum) {
     appleList[typenum].colors.forEach((color, index) => {
 
         let col6 = document.createElement('div')
-        col6.setAttribute('class', 'col-6')
+        col6.setAttribute('class', 'col-12 col-md-6')
         let button = document.createElement('button')
         button.setAttribute('class', 'p-btn')
         button.setAttribute('id', `color_btn_${index}`)
@@ -183,7 +183,7 @@ function setPage(typenum) {
 
     //儲存裝置標題
     const col12_storage = document.createElement('button')
-    col12_storage.setAttribute('class', 'col-12 border-0 text-start bg-white text-black')
+    col12_storage.setAttribute('class', 'col-12 col-md-12 border-0 text-start bg-white text-black')
     col12_storage.disabled =true
     const h2_storage = document.createElement('h2')
     h2_storage.setAttribute('id', 'h2_storage')
@@ -194,7 +194,7 @@ function setPage(typenum) {
 
     Object.keys(appleList[typenum].gbs).forEach((gb, index) => {
         let col6 = document.createElement('div')
-        col6.setAttribute('class', 'col-6')
+        col6.setAttribute('class', 'col-12 col-md-6')
         let button = document.createElement('button')
         button.setAttribute('class', 'p-btn')
         button.setAttribute('id', `gb_btn_${index}`)
@@ -208,7 +208,7 @@ function setPage(typenum) {
     })
     //連線能力標題
     const col12_wifi = document.createElement('button')
-    col12_wifi.setAttribute('class', 'col-12 border-0 text-start bg-white text-black')
+    col12_wifi.setAttribute('class', 'col-12 col-md-12 border-0 text-start bg-white text-black')
     col12_wifi.disabled=true
     const h2_wifi = document.createElement('h2')
     h2_wifi.setAttribute('id', 'h2_wifi')
@@ -218,7 +218,7 @@ function setPage(typenum) {
     //連線能力按鈕
     appleList[typenum].wifi.titles.forEach((wifioption, index) => {
         let col6 = document.createElement('div')
-        col6.setAttribute('class', 'col-6')
+        col6.setAttribute('class', 'col-12 col-md-6')
         let button = document.createElement('button')
         let wifi_price = document.createElement('div')
         button.setAttribute('class', 'p-btn')
