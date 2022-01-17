@@ -237,8 +237,12 @@ function setPage(typenum) {
     btn_buy.addEventListener('click', cart)
 
     function cart() {
-        let finalanswer = document.getElementById('finalanswer')
+        let finalanswer = document.createElement('div')
+        finalanswer.setAttribute('id', 'finalanswer')
+        finalanswer.setAttribute('class', 'text-md-center')
+        
         finalanswer.innerText = `您已經成功${h1.innerText}\n${h2_outward.innerText}\n${h2_storage.innerText}\n${h2_wifi.innerText}\n價格:NT$${price.innerText}元`
+        document.body.appendChild(finalanswer)
         //alert(`您已經成功${h1.innerText}\n${h2_outward.innerText}\n${h2_storage.innerText}\n${h2_wifi.innerText}\n價格:NT$${price.innerText}元`)
     }
 
@@ -333,18 +337,18 @@ function setPage(typenum) {
             btn_color.setAttribute('class', 'p-btn d-block')
         })
     })
-    let btn_storages = document.querySelectorAll('#storageRow .p-btn')
+    let btn_storages = document.querySelectorAll('#storageRow .p-btn ' )
     col12_storage.addEventListener('click', function () {
         col12_storage.disabled = true
         btn_storages.forEach(btn_storage => { 
-            btn_storage.setAttribute('class', 'p-btn d-block')
+            btn_storage.setAttribute('class', 'p-btn d-block ')
         })
     })
     let btn_wifis = document.querySelectorAll('#wifiRow .p-btn')
     col12_wifi.addEventListener('click', function () {
         col12_wifi.disabled = true
         btn_wifis.forEach(btn_wifi => {
-            btn_wifi.setAttribute('class', 'p-btn  d-block')
+            btn_wifi.setAttribute('class', 'p-btn  d-block ')
         })
     })
     //btn 購物
