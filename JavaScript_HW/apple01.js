@@ -148,8 +148,9 @@ function setPage(typenum) {
     buywhatCol.appendChild(h1)
 
     //外觀標題
-    const col12_outward = document.createElement('div')
-    col12_outward.setAttribute('class', 'col-12')
+    const col12_outward = document.createElement('button')
+    col12_outward.setAttribute('class', 'col-12 border-0 text-start bg-white text-black')
+    col12_outward.disabled =true
     const h2_outward = document.createElement('h2')
     h2_outward.setAttribute('id', 'h2_outward')
     h2_outward.innerHTML = '外觀'
@@ -181,8 +182,9 @@ function setPage(typenum) {
 
 
     //儲存裝置標題
-    const col12_storage = document.createElement('div')
-    col12_storage.setAttribute('class', 'col-12')
+    const col12_storage = document.createElement('button')
+    col12_storage.setAttribute('class', 'col-12 border-0 text-start bg-white text-black')
+    col12_storage.disabled =true
     const h2_storage = document.createElement('h2')
     h2_storage.setAttribute('id', 'h2_storage')
     h2_storage.innerHTML = '儲存裝置'
@@ -205,8 +207,9 @@ function setPage(typenum) {
         storageRow.appendChild(col6)
     })
     //連線能力標題
-    const col12_wifi = document.createElement('div')
-    col12_wifi.setAttribute('class', 'col-12')
+    const col12_wifi = document.createElement('button')
+    col12_wifi.setAttribute('class', 'col-12 border-0 text-start bg-white text-black')
+    col12_wifi.disabled=true
     const h2_wifi = document.createElement('h2')
     h2_wifi.setAttribute('id', 'h2_wifi')
     h2_wifi.innerHTML = '連線能力'
@@ -236,7 +239,7 @@ function setPage(typenum) {
     function cart() {
         let finalanswer = document.getElementById('finalanswer')
         finalanswer.innerText = `您已經成功${h1.innerText}\n${h2_outward.innerText}\n${h2_storage.innerText}\n${h2_wifi.innerText}\n價格:NT$${price.innerText}元`
-
+        //alert(`您已經成功${h1.innerText}\n${h2_outward.innerText}\n${h2_storage.innerText}\n${h2_wifi.innerText}\n價格:NT$${price.innerText}元`)
     }
 
     //onclick外觀
@@ -260,9 +263,12 @@ function setPage(typenum) {
         
         let btn_colors = document.querySelectorAll('#outwardRow .p-btn')
         btn_colors.forEach(btn_color => {
-            btn_color.setAttribute('class', 'p-btn')
+            btn_color.setAttribute('class', 'p-btn d-none')
         })
-        document.getElementById(`color_btn_${i}`).setAttribute('class' ,'p-btn active')
+        document.getElementById(`color_btn_${i}`).setAttribute('class', 'p-btn active d-none')
+        col12_outward.disabled = false
+
+        
     }
 
 
@@ -291,9 +297,10 @@ function setPage(typenum) {
         //讓儲存裝置btn選取到變色
         let btn_storages = document.querySelectorAll('#storageRow .p-btn')
         btn_storages.forEach(btn_storage => {
-            btn_storage.setAttribute('class', 'p-btn')
+            btn_storage.setAttribute('class', 'p-btn d-none')
         })
-        document.getElementById(`gb_btn_${i}`).setAttribute('class', 'p-btn active')
+        document.getElementById(`gb_btn_${i}`).setAttribute('class', 'p-btn active d-none')
+        col12_storage.disabled = false
     }
 
 
@@ -303,7 +310,6 @@ function setPage(typenum) {
     for (let i = 0; i <= wifiRow.childElementCount - 2; i++) {
         let wifi_btn = document.getElementById(`wifi_btn_${i}`)
         wifi_btn.addEventListener('click', () => { wifi_btn_click(i) });
-
     }
     function wifi_btn_click(i) {
         price.innerHTML = document.querySelector(`#wifi_btn_${i} > div`).innerHTML
@@ -314,10 +320,33 @@ function setPage(typenum) {
         //讓連線能力btn選取到變色
         let btn_wifis = document.querySelectorAll('#wifiRow .p-btn')
         btn_wifis.forEach(btn_wifi => {
-            btn_wifi.setAttribute('class', 'p-btn')
-        })
-        document.getElementById(`wifi_btn_${i}`).setAttribute('class','p-btn active')
+            btn_wifi.setAttribute('class', 'p-btn d-none')
+        }) 
+        document.getElementById(`wifi_btn_${i}`).setAttribute('class', 'p-btn active d-none')
+        col12_wifi.disabled = false
     }
+
+    let btn_colors = document.querySelectorAll('#outwardRow .p-btn')
+    col12_outward.addEventListener('click', function () {
+        col12_outward.disabled = true
+        btn_colors.forEach(btn_color => {
+            btn_color.setAttribute('class', 'p-btn d-block')
+        })
+    })
+    let btn_storages = document.querySelectorAll('#storageRow .p-btn')
+    col12_storage.addEventListener('click', function () {
+        col12_storage.disabled = true
+        btn_storages.forEach(btn_storage => { 
+            btn_storage.setAttribute('class', 'p-btn d-block')
+        })
+    })
+    let btn_wifis = document.querySelectorAll('#wifiRow .p-btn')
+    col12_wifi.addEventListener('click', function () {
+        col12_wifi.disabled = true
+        btn_wifis.forEach(btn_wifi => {
+            btn_wifi.setAttribute('class', 'p-btn  d-block')
+        })
+    })
     //btn 購物
 
 
