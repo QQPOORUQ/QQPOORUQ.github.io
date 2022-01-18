@@ -119,6 +119,7 @@ const btn_ipad = document.getElementById('btn_ipad')
 const btn_ipad_mini = document.getElementById('btn_ipad_mini')
 const buywhatCol = document.getElementById('buywhatCol')
 const btn_buy = document.getElementById('btn_buy')
+const cartArea = document.getElementById('cartArea')
 let wifi_price_normal
 let wifi_price_plus
 
@@ -253,10 +254,10 @@ function setPage(typenum) {
     function cart() {
         let finalanswer = document.createElement('div')
         finalanswer.setAttribute('id', 'finalanswer')
-        finalanswer.setAttribute('class', 'text-md-center')
+        finalanswer.setAttribute('class', 'text-md-center ')
 
         finalanswer.innerText = `您已經成功${h1.innerText}\n${h2_outward.innerText}\n${h2_storage.innerText}\n${h2_wifi.innerText}\n價格:NT$${price.innerText}元`
-        document.body.appendChild(finalanswer)
+        cartArea.appendChild(finalanswer)
         alert(`您已經成功${h1.innerText}\n${h2_outward.innerText}\n${h2_storage.innerText}\n${h2_wifi.innerText}\n價格:NT$${price.innerText}元`)
         btn_buy.removeEventListener('click',cart)
     }
@@ -283,8 +284,10 @@ function color_btn_click(i) {
     let btn_colors = document.querySelectorAll('#outwardRow .p-btn')
     btn_colors.forEach(btn_color => {
         btn_color.setAttribute('class', 'p-btn d-none')
+        btn_color.setAttribute('selected', 'false')
     })
-    document.getElementById(`color_btn_${i}`).setAttribute('class', 'p-btn active d-none')
+    document.getElementById(`color_btn_${i}`).setAttribute('class', 'p-btn  d-none')
+    document.getElementById(`color_btn_${i}`).setAttribute('selected', 'true')
     col12_outward.disabled = false
 
 
@@ -317,8 +320,10 @@ function gb_btn_click(i) {
     let btn_storages = document.querySelectorAll('#storageRow .p-btn')
     btn_storages.forEach(btn_storage => {
         btn_storage.setAttribute('class', 'p-btn d-none')
+        btn_storage.setAttribute('selected', 'false')
     })
-    document.getElementById(`gb_btn_${i}`).setAttribute('class', 'p-btn active d-none')
+    document.getElementById(`gb_btn_${i}`).setAttribute('class', 'p-btn  d-none')
+    document.getElementById(`gb_btn_${i}`).setAttribute('selected', 'true')
     col12_storage.disabled = false
 }
 
@@ -340,8 +345,10 @@ function wifi_btn_click(i) {
     let btn_wifis = document.querySelectorAll('#wifiRow .p-btn')
     btn_wifis.forEach(btn_wifi => {
         btn_wifi.setAttribute('class', 'p-btn d-none')
+        btn_wifi.setAttribute('selected', 'false')
     })
-    document.getElementById(`wifi_btn_${i}`).setAttribute('class', 'p-btn active d-none')
+    document.getElementById(`wifi_btn_${i}`).setAttribute('class', 'p-btn  d-none')
+    document.getElementById(`wifi_btn_${i}`).setAttribute('selected', 'true')
     col12_wifi.disabled = false
 }
 
