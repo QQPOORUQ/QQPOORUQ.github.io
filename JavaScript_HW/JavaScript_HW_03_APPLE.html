@@ -12,17 +12,19 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <style>
-
         body {
 
-            padding-bottom: 120px;
+            padding-bottom: 120px;;
         }
-        h2{
+
+        h2 {
             font-weight: 600;
         }
-        .p-btn[selected ="true"]{
-            border:1px solid blue;
+
+        .p-btn[selected="true"] {
+            border: 1px solid blue;
         }
+
         #price::before {
             content: 'NT$';
         }
@@ -38,7 +40,7 @@
 
         #buyArea {
             border-bottom: 1px solid #CECECF;
-            padding: .3em ;
+            padding: .3em;
         }
 
         #underbuyarea {
@@ -51,7 +53,8 @@
             border-top: 1px solid #D2D2D7;
         }
 
-        #cart_a,.help{
+        #cart_a,
+        .help {
             background-color: #333333;
             border: none;
         }
@@ -91,6 +94,14 @@
             padding-bottom: 25px;
             border-bottom: 2px solid #D2D2D7;
         }
+
+
+        @media screen and (min-width768px) {
+        #mainpicItem {
+        width: 80%;
+        }
+
+        }
     </style>
     <title>Apple</title>
 </head>
@@ -100,7 +111,7 @@
     <div class=" header m-auto d-grid ">
         <ul class="nav justify-content-center py-1 ">
             <li class="nav-item">
-                <a href="#" class="help nav-link btn btn-dark text-white me-3  "><i class="fab fa-apple"></i></a>
+                <a href="#" class="help nav-link btn btn-dark text-white me-3"><i class="fab fa-apple"></i></a>
             </li>
             <li class="nav-item">
                 <button id="btn_ipad_air" class="nav-link btn btn-dark text-white me-3 ">iPad-air</button>

@@ -132,14 +132,15 @@ window.onload = function () {
 }
 
 function setPage(typenum) {
-    //一開始的圖
+    
     buywhatCol.innerHTML = ""
     mainpicItem.innerHTML = ""
     outwardRow.innerHTML = ""
     storageRow.innerHTML = ""
     wifiRow.innerHTML = ""
+    //一開始的圖
     let mainimg = document.createElement('img')
-    mainimg.setAttribute('class', "w-100")
+    mainimg.setAttribute('class', "img-fluid ")
     mainimg.setAttribute('src', appleList[typenum].setpic)
     mainpicItem.append(mainimg)
     //title
