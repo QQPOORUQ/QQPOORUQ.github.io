@@ -150,7 +150,7 @@ function setPage(typenum) {
     //外觀標題
     const col12_outward = document.createElement('button')
     col12_outward.setAttribute('class', 'col-12 col-md-12 border-0 text-start bg-white text-black')
-    col12_outward.disabled =true
+    col12_outward.disabled = true
     const h2_outward = document.createElement('h2')
     h2_outward.setAttribute('id', 'h2_outward')
     h2_outward.innerHTML = '外觀'
@@ -184,7 +184,7 @@ function setPage(typenum) {
     //儲存裝置標題
     const col12_storage = document.createElement('button')
     col12_storage.setAttribute('class', 'col-12 col-md-12 border-0 text-start bg-white text-black')
-    col12_storage.disabled =true
+    col12_storage.disabled = true
     const h2_storage = document.createElement('h2')
     h2_storage.setAttribute('id', 'h2_storage')
     h2_storage.innerHTML = '儲存裝置'
@@ -209,7 +209,7 @@ function setPage(typenum) {
     //連線能力標題
     const col12_wifi = document.createElement('button')
     col12_wifi.setAttribute('class', 'col-12 col-md-12 border-0 text-start bg-white text-black')
-    col12_wifi.disabled=true
+    col12_wifi.disabled = true
     const h2_wifi = document.createElement('h2')
     h2_wifi.setAttribute('id', 'h2_wifi')
     h2_wifi.innerHTML = '連線能力'
@@ -234,123 +234,138 @@ function setPage(typenum) {
     price.innerHTML = `${Object.values(appleList[typenum].gbs)[0]}`
     //購買按鍵
     btn_buy.disabled = true
-    btn_buy.addEventListener('click', cart)
 
+
+    // let cart = function () {
+    //     let finalanswer = document.createElement('div')
+    //     finalanswer.setAttribute('id', 'finalanswer')
+    //     finalanswer.setAttribute('class', 'text-md-center')
+
+    //     finalanswer.innerText = `您已經成功${h1.innerText}\n${h2_outward.innerText}\n${h2_storage.innerText}\n${h2_wifi.innerText}\n價格:NT$${price.innerText}元`
+    //     document.body.appendChild(finalanswer)
+    //     alert(`您已經成功${h1.innerText}\n${h2_outward.innerText}\n${h2_storage.innerText}\n${h2_wifi.innerText}\n價格:NT$${price.innerText}元`)
+    //     btn_buy.removeEventListener('click', cart)
+
+    // // }
+    // btn_buy.addEventListener('click', cart)
+
+    btn_buy.onclick = cart
     function cart() {
         let finalanswer = document.createElement('div')
         finalanswer.setAttribute('id', 'finalanswer')
         finalanswer.setAttribute('class', 'text-md-center')
-        
+
         finalanswer.innerText = `您已經成功${h1.innerText}\n${h2_outward.innerText}\n${h2_storage.innerText}\n${h2_wifi.innerText}\n價格:NT$${price.innerText}元`
         document.body.appendChild(finalanswer)
-        //alert(`您已經成功${h1.innerText}\n${h2_outward.innerText}\n${h2_storage.innerText}\n${h2_wifi.innerText}\n價格:NT$${price.innerText}元`)
+        alert(`您已經成功${h1.innerText}\n${h2_outward.innerText}\n${h2_storage.innerText}\n${h2_wifi.innerText}\n價格:NT$${price.innerText}元`)
+        btn_buy.removeEventListener('click',cart)
     }
 
-    //onclick外觀
-    //color_btn_${index} outwardRow
-    //下次寫for不加let就自殺
-    for (let i = 0; i <= outwardRow.childElementCount - 2; i++) {
-        document.getElementById(`color_btn_${i}`).addEventListener('click', () => { color_btn_click(i) });
-    }
+//onclick外觀
+//color_btn_${index} outwardRow
+//下次寫for不加let就自殺
+for (let i = 0; i <= outwardRow.childElementCount - 2; i++) {
+    document.getElementById(`color_btn_${i}`).addEventListener('click', () => { color_btn_click(i) });
+}
 
-    //要掛上改變主圖片的function
-    function color_btn_click(i) {
-        mainimg.setAttribute('src', appleList[typenum].colors[i].mainsrc)
-        //讓h2儲存選取到的顏色
-        h2_outward.innerHTML = `外觀: ${appleList[typenum].colors[i].colorname}`
-        //讓儲存裝置案紐disable = false
-        let btn_storages = document.querySelectorAll('#storageRow .p-btn')
-        btn_storages.forEach(btn_storage => {
-            btn_storage.disabled = false
-        })
-        //讓colorbtn被選取到變色
-        
-        let btn_colors = document.querySelectorAll('#outwardRow .p-btn')
-        btn_colors.forEach(btn_color => {
-            btn_color.setAttribute('class', 'p-btn d-none')
-        })
-        document.getElementById(`color_btn_${i}`).setAttribute('class', 'p-btn active d-none')
-        col12_outward.disabled = false
-
-        
-    }
-
-
-
-    //onclick儲存裝置 
-    //價格帶入#price 連線能力btn帶入價格
-    for (let i = 0; i <= storageRow.childElementCount - 2; i++) {
-        let gb_btn = document.getElementById(`gb_btn_${i}`)
-        
-        gb_btn.addEventListener('click', () => { gb_btn_click(i) });
-    }
-
-    function gb_btn_click(i) {
-        wifi_price_normal = document.querySelector(`#wifi_btn_${0} > div`)
-        wifi_price_plus = document.querySelector(`#wifi_btn_${1} > div`)
-        wifi_price_normal.innerHTML = Object.values(appleList[typenum].gbs)[i]
-        wifi_price_plus.innerHTML = Object.values(appleList[typenum].gbs)[i] + appleList[typenum].wifi.wifiplus
-        price.innerText = `${wifi_price_normal.innerHTML} `
-        //選到的gb顯示在標題
-        h2_storage.innerHTML = `儲存裝置: ${Object.keys(appleList[typenum].gbs)[i]}`
-        //開啟下一階段按鍵
-        let btn_wifis = document.querySelectorAll('#wifiRow .p-btn')
-        btn_wifis.forEach(btn_wifi => {
-            btn_wifi.disabled = false
-        })
-        //讓儲存裝置btn選取到變色
-        let btn_storages = document.querySelectorAll('#storageRow .p-btn')
-        btn_storages.forEach(btn_storage => {
-            btn_storage.setAttribute('class', 'p-btn d-none')
-        })
-        document.getElementById(`gb_btn_${i}`).setAttribute('class', 'p-btn active d-none')
-        col12_storage.disabled = false
-    }
-
-
-
-    // 
-    //onclick連線能力
-    for (let i = 0; i <= wifiRow.childElementCount - 2; i++) {
-        let wifi_btn = document.getElementById(`wifi_btn_${i}`)
-        wifi_btn.addEventListener('click', () => { wifi_btn_click(i) });
-    }
-    function wifi_btn_click(i) {
-        price.innerHTML = document.querySelector(`#wifi_btn_${i} > div`).innerHTML
-        //標題加上已經選擇的方案
-        h2_wifi.innerHTML = `連線能力: ${appleList[typenum].wifi.titles[i]}`
-        //開啟購買鍵
-        btn_buy.disabled = false
-        //讓連線能力btn選取到變色
-        let btn_wifis = document.querySelectorAll('#wifiRow .p-btn')
-        btn_wifis.forEach(btn_wifi => {
-            btn_wifi.setAttribute('class', 'p-btn d-none')
-        }) 
-        document.getElementById(`wifi_btn_${i}`).setAttribute('class', 'p-btn active d-none')
-        col12_wifi.disabled = false
-    }
+//要掛上改變主圖片的function
+function color_btn_click(i) {
+    mainimg.setAttribute('src', appleList[typenum].colors[i].mainsrc)
+    //讓h2儲存選取到的顏色
+    h2_outward.innerHTML = `外觀: ${appleList[typenum].colors[i].colorname}`
+    //讓儲存裝置案紐disable = false
+    let btn_storages = document.querySelectorAll('#storageRow .p-btn')
+    btn_storages.forEach(btn_storage => {
+        btn_storage.disabled = false
+    })
+    //讓colorbtn被選取到變色
 
     let btn_colors = document.querySelectorAll('#outwardRow .p-btn')
-    col12_outward.addEventListener('click', function () {
-        col12_outward.disabled = true
-        btn_colors.forEach(btn_color => {
-            btn_color.setAttribute('class', 'p-btn d-block')
-        })
+    btn_colors.forEach(btn_color => {
+        btn_color.setAttribute('class', 'p-btn d-none')
     })
-    let btn_storages = document.querySelectorAll('#storageRow .p-btn ' )
-    col12_storage.addEventListener('click', function () {
-        col12_storage.disabled = true
-        btn_storages.forEach(btn_storage => { 
-            btn_storage.setAttribute('class', 'p-btn d-block ')
-        })
-    })
+    document.getElementById(`color_btn_${i}`).setAttribute('class', 'p-btn active d-none')
+    col12_outward.disabled = false
+
+
+}
+
+
+
+//onclick儲存裝置 
+//價格帶入#price 連線能力btn帶入價格
+for (let i = 0; i <= storageRow.childElementCount - 2; i++) {
+    let gb_btn = document.getElementById(`gb_btn_${i}`)
+
+    gb_btn.addEventListener('click', () => { gb_btn_click(i) });
+}
+
+function gb_btn_click(i) {
+    wifi_price_normal = document.querySelector(`#wifi_btn_${0} > div`)
+    wifi_price_plus = document.querySelector(`#wifi_btn_${1} > div`)
+    wifi_price_normal.innerHTML = Object.values(appleList[typenum].gbs)[i]
+    wifi_price_plus.innerHTML = Object.values(appleList[typenum].gbs)[i] + appleList[typenum].wifi.wifiplus
+    price.innerText = `${wifi_price_normal.innerHTML} `
+    //選到的gb顯示在標題
+    h2_storage.innerHTML = `儲存裝置: ${Object.keys(appleList[typenum].gbs)[i]}`
+    //開啟下一階段按鍵
     let btn_wifis = document.querySelectorAll('#wifiRow .p-btn')
-    col12_wifi.addEventListener('click', function () {
-        col12_wifi.disabled = true
-        btn_wifis.forEach(btn_wifi => {
-            btn_wifi.setAttribute('class', 'p-btn  d-block ')
-        })
+    btn_wifis.forEach(btn_wifi => {
+        btn_wifi.disabled = false
     })
+    //讓儲存裝置btn選取到變色
+    let btn_storages = document.querySelectorAll('#storageRow .p-btn')
+    btn_storages.forEach(btn_storage => {
+        btn_storage.setAttribute('class', 'p-btn d-none')
+    })
+    document.getElementById(`gb_btn_${i}`).setAttribute('class', 'p-btn active d-none')
+    col12_storage.disabled = false
+}
+
+
+
+// 
+//onclick連線能力
+for (let i = 0; i <= wifiRow.childElementCount - 2; i++) {
+    let wifi_btn = document.getElementById(`wifi_btn_${i}`)
+    wifi_btn.addEventListener('click', () => { wifi_btn_click(i) });
+}
+function wifi_btn_click(i) {
+    price.innerHTML = document.querySelector(`#wifi_btn_${i} > div`).innerHTML
+    //標題加上已經選擇的方案
+    h2_wifi.innerHTML = `連線能力: ${appleList[typenum].wifi.titles[i]}`
+    //開啟購買鍵
+    btn_buy.disabled = false
+    //讓連線能力btn選取到變色
+    let btn_wifis = document.querySelectorAll('#wifiRow .p-btn')
+    btn_wifis.forEach(btn_wifi => {
+        btn_wifi.setAttribute('class', 'p-btn d-none')
+    })
+    document.getElementById(`wifi_btn_${i}`).setAttribute('class', 'p-btn active d-none')
+    col12_wifi.disabled = false
+}
+
+let btn_colors = document.querySelectorAll('#outwardRow .p-btn')
+col12_outward.addEventListener('click', function () {
+    col12_outward.disabled = true
+    btn_colors.forEach(btn_color => {
+        btn_color.setAttribute('class', 'p-btn d-block')
+    })
+})
+let btn_storages = document.querySelectorAll('#storageRow .p-btn ')
+col12_storage.addEventListener('click', function () {
+    col12_storage.disabled = true
+    btn_storages.forEach(btn_storage => {
+        btn_storage.setAttribute('class', 'p-btn d-block ')
+    })
+})
+let btn_wifis = document.querySelectorAll('#wifiRow .p-btn')
+col12_wifi.addEventListener('click', function () {
+    col12_wifi.disabled = true
+    btn_wifis.forEach(btn_wifi => {
+        btn_wifi.setAttribute('class', 'p-btn  d-block ')
+    })
+})
     //btn 購物
 
 
