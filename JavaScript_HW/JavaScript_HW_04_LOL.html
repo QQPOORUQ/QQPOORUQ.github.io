@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>LOL英雄列表</title>
+    <style>
+        body {
+            padding: 2;
+            background-color: #D2D2D7;
+        }
+
+        .header {
+            background-image: url('/JavaScript_HW/lol.jfif');
+            background-repeat: initial;
+            min-height: 100px;
+            opacity: .8;
+
+
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 60px;
+            line-height: 3em;
+            margin-bottom: 0.5em;
+            color: white;
+        }
+
+        .card {
+            border: 1px solid black;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .headshot {
+            overflow: hidden;
+        }
+
+        .card-title {
+            color: white;
+            background-color: black;
+            display: inline-block;
+            border-radius: 5px;
+            padding: 5px 15px 5px 15px;
+        }
+
+        .card-body {
+            background-color: #ffbf67;
+        }
+
+        .card:hover {
+            box-shadow: 8px 8px 15px #808080;
+            transform: translate(5px, 5px);
+        }
+
+        .card:hover img {
+            transform: scale(1.05);
+            transition: transform 0.5s;
+        }
+
+        .card:not(:hover) img {
+            transform: scale(1, 1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover .card-body {
+            background-color: lightgreen !important;
+        }
+
+        .card:hover .card-title {
+            color: black;
+            background-color: white !important;
+        }
+
+        .card-text {
+            height: 9em;
+            overflow: auto;
+        }
+
+        .modaltitle {
+            background-color: black;
+            color: white
+        }
+
+        .modal-header {
+            background-color: black;
+            color: white
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>LOL英雄列表</h1>
+    </div>
+
+    <div class="container-xl">
+
+        <div class="row">
+
+            <template id='cardChamp'>
+                <div class="card col-md-3 col-12 mb-5">
+                    <img src="" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"></h5>
+                        <p class="card-text"></p>
+                        <button href="#" class="btn btn-primary" id="btn_detail" data-toggle="modal"
+                            data-target="#exampleModal">詳細內容</button>
+                        <button href="#" class="btn btn-danger"  id="btn_video"
+                            >影片</button>
+                    </div>
+                </div>
+            </template>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <img id="champImage">
+                            <h1 id="description" class="text-primary"></h1>
+                            <p id="modal_p"></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
+    <script>
+        const url = "https://raw.githubusercontent.com/QQPOORUQ/QQPOORUQ.github.io/main/JavaScript_HW/lol.json"
+        let champitems, champarray
+        const row = document.querySelector('.row')
+
+        let cardChamp = document.querySelector('#cardChamp')
+        let xhr = new XMLHttpRequest();
+        xhr.onload = function () {
+            champitems = xhr.response.data
+            champarray = Object.values(champitems)
+            champarray.forEach(champ => {
+                champ.image.full =
+                    `https://cdngarenanow-a.akamaihd.net/games/lol/2020/LOLwebsite/champion/${champ.id}_0.jpg`
+                champ.image.big =
+                    `https://cdngarenanow-a.akamaihd.net/webmain/static/pss/lol/items_splash/${champ.id.toLocaleLowerCase()}_0.jpg`
+            })
+            console.log(champarray);
+            champarray.forEach(champ => {
+                let _card = getCard(champ)
+                // setModal(champ)
+                row.append(_card)
+            })
+        }
+        xhr.responseType = 'json'
+        xhr.open('GET', url)
+        xhr.send()
+
+        function getCard(champ) {
+            //外面的卡
+            let cloneCard = cardChamp.content.cloneNode(true);
+            cloneCard.querySelector('h5').innerText = `${champarray.indexOf(champ)+1} : ${champ.name}`;
+            cloneCard.querySelector('img').src = champ.image.full;
+            cloneCard.querySelector('.card-text').innerText = champ.blurb
+            cloneCard.querySelector("#btn_detail").addEventListener('click', function () {
+                let modal = document.querySelector('#exampleModal')
+                let modal_p = modal.querySelector('#modal_p')
+                modal.querySelector('h5').innerText = `${champ.name}-${champ.id}`
+                let detail = ''
+                Object.keys(champ.stats).forEach(i => {
+                    if (i == 'hp' || i == 'movespeed' || i == 'armor' || i == 'spellblock' || i ==
+                        'attackrange') {
+                        let stat = `${i}:  ${champ.stats[i]}`
+                        console.log(stat);
+
+                        detail += stat + '<br>'
+                    }
+                })
+                modal_p.innerHTML = detail
+                modal.querySelector('#champImage').setAttribute('src', champ.image.big)
+                modal.querySelector('#champImage').setAttribute('class', 'w-100')
+            })
+            return cloneCard;
+        }
+
+        // function setModal(champ) {
+        //     let modal = document.querySelector('#exampleModal')
+        //     modal.querySelector('h5').innerText = `${champ.name}-${champ.id}`
+        //     modal.querySelector('#champImage').src = champ.image.big
+        //     let detail
+        //     modal.querySelector('#description').innerText = champ.stats
+
+        //     Object.keys(champ.stats).forEach(i=>{
+        //         let stat = `${i}:${champ.stats[i]}\n`
+        //         detail+=stat
+        //     })
+
+        // }
+    </script>
+</body>
+
+</html>
