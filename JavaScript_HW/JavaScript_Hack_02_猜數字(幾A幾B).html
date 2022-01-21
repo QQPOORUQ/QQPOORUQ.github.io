@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>document</title>
+    <style>
+        body {
+            background-color: white;
+        }
+
+        .nav>button {
+            border: 1px solid black;
+        }
+
+        .history {
+            min-height: 300px;
+            border: 1px solid gray;
+            border-radius: 10px;
+        }
+
+        .answer_col {
+
+            border-bottom: 1px solid black;
+            line-height: 3em;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        .answer_col>div {
+            text-align: center;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-flex nav  my-5">
+                <button class="flex-grow-1 btn btn-light " id="btn_start">開始</button>
+                <button class="flex-grow-1 btn btn-light " id="btn_giveup">放棄重來</button>
+                <button class="flex-grow-1 btn btn-light " id="btn_watchanswer">看答案</button>
+            </div>
+            <div class="col-12 history">
+                <div class="row row_history">
+
+                </div>
+            </div>
+            <div class="col-12 mt-5">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="猜答案(四個不重複的阿拉伯數字)" aria-label="Recipient's username"
+                        aria-describedby="btn_guess">
+                    <button class="btn btn-outline-secondary" type="button" id="btn_guess">猜!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+    <script>
+        const btn_start = document.querySelector('#btn_start')
+        const btn_giveup = document.querySelector('#btn_giveup')
+        const btn_watchanswer = document.querySelector('#btn_watchanswer')
+        const row_history = document.querySelector('.row_history')
+        const btn_guess = document.querySelector('#btn_guess')
+        const input = document.querySelector('input')
+        let questionarray = []
+        let A = 0
+        let B = 0
+        const reg3 = new RegExp('[0-9]+$')
+        window.onload = function () {
+            setpage()
+
+        }
+
+        function setpage() {
+            btn_start.onclick = createrandom
+            btn_giveup.addEventListener('click', watchanswer)
+            btn_giveup.addEventListener('click', reset)
+            btn_giveup.disabled = true
+            btn_watchanswer.onclick = watchanswer
+            btn_watchanswer.disabled = true
+            btn_guess.onclick = guess
+            btn_guess.disabled = true
+        }
+
+        //掛startbtn
+        function createrandom() {
+            while (questionarray.length < 4) {
+                let a = Math.floor(Math.random() * 10)
+                if (!questionarray.includes(a)) {
+                    questionarray.push(a)
+                }
+            }
+            btn_start.disabled = true
+            btn_giveup.disabled = false
+            btn_watchanswer.disabled = false
+            btn_guess.disabled = false
+            console.log(questionarray)
+        }
+        //掛_btngiveup
+        function watchanswer() {
+            alert(`答案是:${questionarray}`)
+        }
+        //掛_btngiveup
+        function reset() {
+            questionarray = []
+            row_history.innerHTML = ''
+            input.value = ''
+            btn_giveup.disabled = true
+            btn_start.disabled = false
+            btn_watchanswer.disabled = true
+            btn_guess.disabled = true
+        }
+
+        function guess() {
+            A = 0
+            B = 0
+            let guessarray = Array.from(input.value)
+            if (isRepeat(guessarray) || isnotsuspect(guessarray)) {
+                alert('輸入不合規則喔')
+            } else if (guessarray.length == 4) {
+                guessarray.forEach((guessnum) => {
+                    questionarray.forEach(q => {
+                        if (q == guessnum && questionarray.indexOf(q) == guessarray.indexOf(guessnum)) {
+                            A++
+                        }
+                    })
+                })
+                guessarray.forEach((guessnum) => {
+                    questionarray.forEach(q => {
+                        if (q == guessnum && questionarray.indexOf(q) != guessarray.indexOf(guessnum)) {
+                            B++
+                        }
+                    })
+                })
+                let col12 = document.createElement('div')
+                col12.setAttribute('class', 'col-12 answer_col')
+                let div = document.createElement('div')
+                div.innerHTML = `${A}A ${B}B : [${guessarray}]`
+                col12.appendChild(div)
+                row_history.appendChild(col12)
+                input.value = ''
+                if (A == 4) {
+                    alert(`你猜對了!! 答案就是${questionarray}`)
+                    reset()
+                }
+            }
+        }
+
+        function isRepeat(arr) {
+            var hash = {};
+            for (var i in arr) {
+                if (hash[arr[i]])
+                    return true;
+                hash[arr[i]] = true;
+            }
+            return false;
+        }
+        //  判斷傳入字串是否合規
+        function isnotsuspect(arr) {
+            console.log(arr);
+            const isPass = arr.map((el) => {
+                return reg3.test(el)
+            }).some(el => el == false)
+            
+            console.log(isPass)
+            
+            return isPass
+            
+            // arr.forEach(x=>{
+            //     if(reg3.test(x) == false){
+                    
+            //         return true
+            //     }
+            // })
+            
+        }
+    </script>
+</body>
+
+</html>
