@@ -12,32 +12,49 @@
 
     <title>Calender</title>
     <style>
-        body{
-            background-color: white;
+        body {
+            background-color: rgb(221, 218, 218);
         }
-        h1{
+
+        h1 {
             text-align: center;
         }
-        .container{
-            border:5px double black;
-        }
-        /* thead{
-            border:3px solid black;
-        
-        }
-        tbody{
-        border:3px solid black;
 
+        .container {
+            border: 5px double black;
         }
-        td{
-            border:1px solid black;
-            background-color: #D2D2D7;
-        } */
-        .year-month::after{
+
+        .year-month::after {
             content: '行事曆';
         }
-        tr{
+
+        tr {
             width: 14.2857142857%
+        }
+
+        td {
+            transition: .3s;
+        }
+
+        td:hover {
+            background: #000;
+        }
+
+        .todaytd {
+            background-color: white !important;
+            transition: .3s;
+        }
+
+        .todaytd:hover {
+            background-color: #ccc !important;
+        }
+
+        .todaytd::before {
+            content: '(今天)';
+        }
+
+        .todaytd>ul>li::marker {
+            color: black;
         }
     </style>
 </head>
@@ -45,8 +62,8 @@
 <body>
     <h1 class="year-month py-3 bg-black text-white">0000年-00月</h1>
     <div class="container mt-5">
-        
-        <table class="table align-center table-bordered  mt-3 table-light">
+
+        <table class="table align-center table-bordered  mt-3 table-dark">
             <thead>
                 <tr>
                     <th>日</th>
@@ -62,8 +79,8 @@
                 <!-- 動態生成日期 -->
             </tbody>
         </table>
-        <button class="btn btn-outline-secondary mb-4 me-2" id="btn_last">往上月</button>
-        <button class="btn btn-outline-secondary mb-4" id="btn_next">往下月</button>
+        <button class="btn btn-light mb-4 me-2" id="btn_last">往上月</button>
+        <button class="btn btn-light mb-4" id="btn_next">往下月</button>
         <!-- modal1 add-->
         <div id="add-modal" class="modal" tabindex="-1">
             <div class="modal-dialog">
@@ -83,7 +100,7 @@
                 </div>
             </div>
         </div>
-    <!-- modal2 -->
+        <!-- modal2 -->
         <div id="edit-modal" class="modal" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -96,8 +113,7 @@
                         <input id="editTitleInput" type="text">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                            >Close</button>
+                        <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary" onclick="editTodoItem()">編輯</button>
                         <button type="button" class="btn btn-danger" onclick="deleteTodoItem()">刪除</button>
                     </div>
@@ -112,13 +128,14 @@
     <script>
         //今天
         const today = new Date()
+
         //年月日
         let year = today.getFullYear()
         let month = today.getMonth()
         let date = today.getDate()
-
-//  
-        let currentTodoIndex 
+        
+        //  
+        let currentTodoIndex
         //dom
         const yearMonthText = document.querySelector('.year-month')
         const dateArea = document.querySelector('tbody')
@@ -152,25 +169,30 @@
                 let tr = document.createElement('tr')
                 for (let col = 0; col < 7; col++) {
                     let td = document.createElement('td')
-                        
+
                     if (row == 0 && col < firstDay) {
                         //第一行前面的空格 上個月
+                        td.setAttribute('class', 'opacity-75')
                     } else {
                         if (day <= dayOfMonth) {
                             //這個月
                             td.innerText = day
-                            
+                            //今天
+
+                            if (day == date && month == today.getMonth() && year == today.getFullYear()) {
+                                td.setAttribute('class', ' text-black todaytd')
+                            }
                             if (localStorage.getItem(`${year}-${month+1}-${day}`) != null) {
                                 let ul = document.createElement('ul')
                                 let todoList = JSON.parse(localStorage.getItem(`${year}-${month+1}-${day}`))
-                                todoList.forEach((item,index) => {
+                                todoList.forEach((item, index) => {
                                     let li = document.createElement('li')
                                     li.innerText = item.title
-                                    li.setAttribute('class','btn-primary')
+                                    li.setAttribute('class', 'btn-primary')
                                     //current
                                     currentTodoIndex = index
                                     //編輯區
-                                    li.onclick = function(event){
+                                    li.onclick = function (event) {
                                         bootstrap.Modal.getOrCreateInstance(editModal).show()
                                         editDateInput.value = `${year}-${month+1}-${td.childNodes[0].data}`
                                         editTitleInput.value = item.title
@@ -186,6 +208,7 @@
                             }
                         } else {
                             //  下個月
+                            td.setAttribute('class', 'opacity-75')
                         }
                         day++
                     }
@@ -228,7 +251,7 @@
                 todoList.push(todoObj)
             } else {
                 //那天有行程
-                addTitleInput.innerText =''
+                addTitleInput.innerText = ''
                 todoList = JSON.parse(localStorage.getItem(date))
                 todoList.push(todoObj)
             }
@@ -238,26 +261,28 @@
         }
 
         //修改行程
-        function editTodoItem(){
+        function editTodoItem() {
             let date = editDateInput.value
             let todoItem = editTitleInput.value
 
             let todoList = JSON.parse(localStorage.getItem(date))
-            todoList[currentTodoIndex] = {title:todoItem}
+            todoList[currentTodoIndex] = {
+                title: todoItem
+            }
 
-            localStorage.setItem(date,JSON.stringify(todoList))
+            localStorage.setItem(date, JSON.stringify(todoList))
             bootstrap.Modal.getOrCreateInstance(editModal).hide()
 
             createcalender()
         }
 
         //刪除行程
-        function deleteTodoItem(){
+        function deleteTodoItem() {
             let date = editDateInput.value
             let todoList = JSON.parse(localStorage.getItem(date))
-            todoList.splice(currentTodoIndex,1)
+            todoList.splice(currentTodoIndex, 1)
 
-            localStorage.setItem(date,JSON.stringify(todoList))
+            localStorage.setItem(date, JSON.stringify(todoList))
             bootstrap.Modal.getOrCreateInstance(editModal).hide()
             createcalender()
         }
