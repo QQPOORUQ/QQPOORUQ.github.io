@@ -94,17 +94,17 @@
         let areaDataRequest =
             axios.get(
                 'https://raw.githubusercontent.com/ChouJustice/ChouJustice.github.io/main/Map/%E5%8F%B0%E7%81%A3%E8%A1%8C%E6%94%BF%E5%9C%B0%E5%8D%80.json'
-                )
+            )
         //各行政區每人平均用水量
         let waterDataRequest =
             axios.get(
                 'https://raw.githubusercontent.com/ChouJustice/ChouJustice.github.io/main/Map/%E5%8F%B0%E7%81%A3%E8%87%AA%E4%BE%86%E6%B0%B4%E7%94%A8%E9%87%8F.json'
-                )
+            )
 
         let areaData //行政區經緯
         let waterData //行政區用水量
         let waterAreaData //行政區用水量資料+經緯度資料
-        let markers = L.markerClusterGroup()//地圖marker叢集群組
+        let markers = L.markerClusterGroup() //地圖marker叢集群組
         //DOM
         const countrySelect = document.querySelector('#county')
         const areaText = document.querySelector('strong')
@@ -114,47 +114,49 @@
             setMap()
             Promise.all([areaDataRequest, waterDataRequest])
                 .then(response => {
-                    let [areaRes,waterRes] = response
+                    let [areaRes, waterRes] = response
                     //area
                     areaData = areaRes.data
                     //water
                     waterData =
-                    waterRes.data.TaiwanWaterExchangingData.StatisticofWaterResourcesClass.StatisticofWaterUsageClass.TheConsumptionOfWater
-                    .filter(x=>x.Year == '109')
+                        waterRes.data.TaiwanWaterExchangingData.StatisticofWaterResourcesClass
+                        .StatisticofWaterUsageClass.TheConsumptionOfWater
+                        .filter(x => x.Year == '109')
 
-                    waterAreaData = waterData.map(x=>{
-                        let area = areaData.find(y=>y.City ==x.County &&  y.District == x.Town)
+                    waterAreaData = waterData.map(x => {
+                        let area = areaData.find(y => y.City == x.County && y.District == x.Town)
                         return {
-                            CountyTown:x.County+x.Town,
-                            County:x.County,
-                            Month:x.Month,
-                            TheDailyDomesticConsumptionOfWaterPerPerson:x.TheDailyDomesticConsumptionOfWaterPerPerson,
-                            Town:x.Town,
-                            Year:x.Year,
-                            Lat:area != undefined ? area.Lat:undefined,
-                            Lng:area != undefined ? area.Lng:undefined
+                            CountyTown: x.County + x.Town,
+                            County: x.County,
+                            Month: x.Month,
+                            TheDailyDomesticConsumptionOfWaterPerPerson: x
+                                .TheDailyDomesticConsumptionOfWaterPerPerson,
+                            Town: x.Town,
+                            Year: x.Year,
+                            Lat: area != undefined ? area.Lat : undefined,
+                            Lng: area != undefined ? area.Lng : undefined
                         }
-                    }).filter(X=>X.Lat!=undefined).groupBy('CountyTown')
+                    }).filter(X => X.Lat != undefined).groupBy('CountyTown')
                     console.log(waterAreaData);
-                    
+
                     //縣市下拉選單
                     setMarker()
-                    let ok =['請選擇'].concat([...new Set(areaData.map(x=>x.City))])
-                    ok.forEach(x=>{
+                    let ok = ['請選擇'].concat([...new Set(areaData.map(x => x.City))])
+                    ok.forEach(x => {
                         let option = document.createElement('option')
                         option.innerText = x
-                        option.value = x =='請選擇' ? '' : x
+                        option.value = x == '請選擇' ? '' : x
                         countrySelect.appendChild(option)
                     })
                 })
-                // //地圖的焦點移動至該縣市
+            // //地圖的焦點移動至該縣市
 
-                countrySelect.onchange = function(){
-                    if(countrySelect.value!= ''){
-                        let country =areaData.find(x=>x.City == countrySelect.value)
-                        map.setView([country.Lat,country.Lng],12)
-                    }
+            countrySelect.onchange = function () {
+                if (countrySelect.value != '') {
+                    let country = areaData.find(x => x.City == countrySelect.value)
+                    map.setView([country.Lat, country.Lng], 12)
                 }
+            }
 
         }
         //Axios
@@ -175,25 +177,25 @@
             map.addLayer(osm)
         }
         //array groupby
-        Array.prototype.groupBy = function(prop){
-            return this.reduce(function(group,item){
+        Array.prototype.groupBy = function (prop) {
+            return this.reduce(function (group, item) {
                 const val = item[prop]
-                group[val] = group[val]||[]
+                group[val] = group[val] || []
                 group[val].push(item)
                 return group
-            },{})
+            }, {})
         }
 
-        function setMarker(){
-            if (markers){
+        function setMarker() {
+            if (markers) {
                 markers.clearLayers()
             }
-            Object.keys(waterAreaData).forEach(x=>{
+            Object.keys(waterAreaData).forEach(x => {
                 let data = waterAreaData[x]
 
-                let marker = L.marker([data[0].Lat,data[0].Lng])
-                let avg = (data.map(x=>parseInt(x.TheDailyDomesticConsumptionOfWaterPerPerson))
-                 .reduce(     (a,b) => a + b    )/12).toFixed(2) //toFixed
+                let marker = L.marker([data[0].Lat, data[0].Lng])
+                let avg = (data.map(x => parseInt(x.TheDailyDomesticConsumptionOfWaterPerPerson))
+                    .reduce((a, b) => a + b) / 12).toFixed(2) //toFixed
 
                 marker.bindPopup(
                     `
@@ -201,20 +203,22 @@
                     <p>整年平均每人用水量:${avg}公升</p>
                     `
                 )
-                marker.addEventListener('click',function(){
+                marker.addEventListener('click', function () {
                     areaText.innerText = `${data[0].County} ${data[0].Town}`
                     tableBody.innerHTML = ''
                     let waterTr = document.createElement('tr')
                     let tagTr = document.createElement('tr')
-                    data.forEach(x=>{
+                    data.forEach(x => {
                         let watertd = document.createElement('td')
                         watertd.innerText = x.TheDailyDomesticConsumptionOfWaterPerPerson
                         waterTr.appendChild(watertd)
 
                         let tagtd = document.createElement('td')
                         let icon = document.createElement('i')
-                        icon.classList.add('fas','fa-circle')
-                        icon.style.color = parseFloat(x.TheDailyDomesticConsumptionOfWaterPerPerson)> avg ? 'red' :'green'
+                        icon.classList.add('fas', 'fa-circle')
+                        icon.style.color = parseFloat(x
+                                .TheDailyDomesticConsumptionOfWaterPerPerson) > avg ? 'red' :
+                            'green'
                         tagtd.appendChild(icon)
                         tagTr.appendChild(tagtd)
                     })
