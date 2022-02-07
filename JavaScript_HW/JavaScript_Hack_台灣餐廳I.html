@@ -49,29 +49,9 @@
                     </div>
                 </div>
                 <div class="row">
-                    <h2 class="w-100 text-center"><strong></strong>每人用水量統計(月份/公升)</h2>
-                    <div class="col-12">
-                        <table class="table table-bordered table-striped text-center">
-                            <thead>
-                                <tr>
-                                    <th>1月</th>
-                                    <th>2月</th>
-                                    <th>3月</th>
-                                    <th>4月</th>
-                                    <th>5月</th>
-                                    <th>6月</th>
-                                    <th>7月</th>
-                                    <th>8月</th>
-                                    <th>9月</th>
-                                    <th>10月</th>
-                                    <th>11月</th>
-                                    <th>12月</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                    <h2 class="w-100 text-center my-5"><strong></strong>餐廳詳細資訊</h2>
+                    <div class="col-12" id="detail">
 
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </div>
@@ -89,21 +69,13 @@
     <script>
         //宣告
         let map
-
-        //台灣行政區經緯度資料
-        let areaDataRequest =
+        const detail = document.querySelector('#detail')
+        let restaurantDataRequest =
             axios.get(
-                'https://raw.githubusercontent.com/ChouJustice/ChouJustice.github.io/main/Map/%E5%8F%B0%E7%81%A3%E8%A1%8C%E6%94%BF%E5%9C%B0%E5%8D%80.json'
-            )
-        //各行政區每人平均用水量
-        let waterDataRequest =
-            axios.get(
-                'https://raw.githubusercontent.com/ChouJustice/ChouJustice.github.io/main/Map/%E5%8F%B0%E7%81%A3%E8%87%AA%E4%BE%86%E6%B0%B4%E7%94%A8%E9%87%8F.json'
+                'https://raw.githubusercontent.com/QQPOORUQ/QQPOORUQ.github.io/main/JavaScript_HW/%E5%8F%B0%E7%81%A3%E9%A4%90%E5%BB%B3%E5%88%86%E5%B8%83.json'
             )
 
-        let areaData //行政區經緯
-        let waterData //行政區用水量
-        let waterAreaData //行政區用水量資料+經緯度資料
+        let restaurantData 
         let markers = L.markerClusterGroup() //地圖marker叢集群組
         //DOM
         const countrySelect = document.querySelector('#county')
@@ -112,36 +84,16 @@
         //window.onload
         window.onload = function () {
             setMap()
-            Promise.all([areaDataRequest, waterDataRequest])
+            Promise.all([restaurantDataRequest])
                 .then(response => {
-                    let [areaRes, waterRes] = response
-                    //area
-                    areaData = areaRes.data
-                    //water
-                    waterData =
-                        waterRes.data.TaiwanWaterExchangingData.StatisticofWaterResourcesClass
-                        .StatisticofWaterUsageClass.TheConsumptionOfWater
-                        .filter(x => x.Year == '109')
-
-                    waterAreaData = waterData.map(x => {
-                        let area = areaData.find(y => y.City == x.County && y.District == x.Town)
-                        return {
-                            CountyTown: x.County + x.Town,
-                            County: x.County,
-                            Month: x.Month,
-                            TheDailyDomesticConsumptionOfWaterPerPerson: x
-                                .TheDailyDomesticConsumptionOfWaterPerPerson,
-                            Town: x.Town,
-                            Year: x.Year,
-                            Lat: area != undefined ? area.Lat : undefined,
-                            Lng: area != undefined ? area.Lng : undefined
-                        }
-                    }).filter(X => X.Lat != undefined).groupBy('CountyTown')
-                    console.log(waterAreaData);
+                    let restR = response[0]
+                    console.log(restR);
+                    restaurantData = restR.data.records
+                    console.log(restaurantData);
 
                     //縣市下拉選單
                     setMarker()
-                    let ok = ['請選擇'].concat([...new Set(areaData.map(x => x.City))])
+                    let ok = ['請選擇'].concat([...new Set(restaurantData.map(x => x.County))])
                     ok.forEach(x => {
                         let option = document.createElement('option')
                         option.innerText = x
@@ -149,11 +101,11 @@
                         countrySelect.appendChild(option)
                     })
                 })
-            // //地圖的焦點移動至該縣市
+            //地圖的焦點移動至該縣市
 
             countrySelect.onchange = function () {
                 if (countrySelect.value != '') {
-                    let country = areaData.find(x => x.City == countrySelect.value)
+                    let country = restaurantData.find(x => x.County == countrySelect.value)
                     map.setView([country.Lat, country.Lng], 12)
                 }
             }
@@ -190,40 +142,33 @@
             if (markers) {
                 markers.clearLayers()
             }
-            Object.keys(waterAreaData).forEach(x => {
-                let data = waterAreaData[x]
+            Object.keys(restaurantData).forEach(x => {
+                let data = restaurantData[x]
 
-                let marker = L.marker([data[0].Lat, data[0].Lng])
-                let avg = (data.map(x => parseInt(x.TheDailyDomesticConsumptionOfWaterPerPerson))
-                    .reduce((a, b) => a + b) / 12).toFixed(2) //toFixed
+                let marker = L.marker([data.Lat, data.Lng])
 
                 marker.bindPopup(
                     `
-                    <h4>${data[0].County} ${data[0].Town}</h4>
-                    <p>整年平均每人用水量:${avg}公升</p>
+                    <h4>${data.County} ${data.Town}</h4>
+                    <p>${data.Name}</p>
+                    <p>${data.Address}</p>
+                    <p>${data.Phone}</p>
                     `
                 )
                 marker.addEventListener('click', function () {
-                    areaText.innerText = `${data[0].County} ${data[0].Town}`
-                    tableBody.innerHTML = ''
-                    let waterTr = document.createElement('tr')
-                    let tagTr = document.createElement('tr')
-                    data.forEach(x => {
-                        let watertd = document.createElement('td')
-                        watertd.innerText = x.TheDailyDomesticConsumptionOfWaterPerPerson
-                        waterTr.appendChild(watertd)
+                    areaText.innerText = `${data.County} ${data.Town}`
+                    detail.innerHTML = ''
 
-                        let tagtd = document.createElement('td')
-                        let icon = document.createElement('i')
-                        icon.classList.add('fas', 'fa-circle')
-                        icon.style.color = parseFloat(x
-                                .TheDailyDomesticConsumptionOfWaterPerPerson) > avg ? 'red' :
-                            'green'
-                        tagtd.appendChild(icon)
-                        tagTr.appendChild(tagtd)
-                    })
-                    tableBody.appendChild(waterTr)
-                    tableBody.appendChild(tagTr)
+                    let p_name =document.createElement('h2')
+                    let p_address =document.createElement('p')
+                    let p_phone =document.createElement('p')
+                    p_name.innerHTML = '餐廳名稱: '+data.Name
+                    p_name.setAttribute('class','my-3')
+                    p_address.setAttribute('class','fs-5')
+                    p_phone.setAttribute('class','fs-5')
+                    p_address.innerHTML = '地址: '+data.Address
+                    p_phone.innerHTML = '電話: '+data.Phone
+                    detail.append(p_name,p_address,p_phone)
                 })
                 markers.addLayer(marker)
             })
