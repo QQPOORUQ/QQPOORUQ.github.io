@@ -20,9 +20,14 @@
         body {
             position: relative;
             z-index: 1;
-            background-color: white;
+            background-color: rgb(228, 222, 222);
         }
-
+        .col-1{
+            padding: 5px;
+        }
+        .col-1>i{
+            max-width: 100%;
+        }
         i {
             font-size: 48px;
         }
@@ -45,11 +50,15 @@
         #ticket {
             height: 300px;
             width: 300px;
+            margin: auto;
             top: 150px;
-            left: 800px;
-            position: fixed;
+            /* top: 150px;
+            left: 800px;*/
+            position: fixed; 
+            /* position: relative; */
             z-index: 0;
             background-color: red;
+            border-radius: 5px;
         }
 
         #msg {
@@ -103,7 +112,7 @@
         </div>
         <div class="row">
             <div box-id="31" class="col-1"></div>
-            <div class="col-10 m-auto" id="show">
+            <div class="col-10 m-auto d-flex justify-content-center" id="show">
                 <div id="ticket" class="m-0">
                     <p style="color: black; text-align: center; font-size: 24px;" class="mt-3 bg-info">今日訂餐優惠</p>
                     <p id="msg"></p>
@@ -120,7 +129,7 @@
         </div>
         <div class="row">
             <div box-id="29" class="col-1"></div>
-            <div class="col-10"></div>
+            <div class="col-10 "></div>
             <div box-id="16" class="col-1"></div>
         </div>
         <div class="row">
@@ -369,7 +378,6 @@
         let steps = 0 //剩下來要走的步數
         let allSteps = 0 //全部的步數
         let currentIndex = 0 //目前走到哪一格
-
         let speed = 20 //速率 (越大越慢)
         let fake = 2 //假圈數
         //DOM
@@ -461,7 +469,7 @@
                     context.globalCompositeOperation = "destination-out";
                     context.beginPath();
                     // arc(x, y, radius半徑, startAngle, endAngle, anticlockwise)
-                    context.arc(x - 10, y, 10, 0, Math.PI * 2);
+                    context.arc(x , y, 10, 0, Math.PI * 2);
 
                     context.fill();
                 }
