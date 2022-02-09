@@ -409,7 +409,7 @@
                 box.appendChild(i)
             })
             startBtn.onclick = function () {
-                startBtn.disabled=true
+                startBtn.disabled = true
                 speed = 20
                 let random = Math.floor(Math.random() * brickData.length + 1)
                 console.log(random);
@@ -446,7 +446,7 @@
                 msg.innerText = val
                 createCanvas()
                 bonus.innerHTML = getBonus()
-                startBtn.disabled=false
+                startBtn.disabled = false
             }
         }
 
@@ -461,11 +461,11 @@
 
         function createCanvas() {
             context.beginPath()
-            context.globalCompositeOperation = "source-over";//因為重設的時候將它改成copy了
+            context.globalCompositeOperation = "source-over"; //因為重設的時候將它改成copy了
             context.fillStyle = 'grey'
             context.font = "normal 30px Arial ";
             context.strokeStyle = "black";
-            
+
             context.fillRect(0, 0, 300, 150) //填滿矩形
             context.strokeText("請用滑鼠刮開！", 50, 100);
 
@@ -493,6 +493,21 @@
             canvas.onmouseup = function () {
                 canvas.onmousemove = function () {}
             }
+
+            //手機
+            // canvas.addEventListener('touchmove', function () {
+            //     let touch = event.touches[0]; //獲取第一個觸點
+            //     let x = Number(touch.pageX); //頁面觸點X座標
+            //     let y = Number(touch.pageY); //頁面觸點Y座標
+
+            //     //destination-out 兩圖形重疊部分變透明
+            //     context.globalCompositeOperation = "destination-out";
+            //     context.beginPath();
+            //     // arc(x, y, radius半徑, startAngle, endAngle, anticlockwise)
+            //     context.arc(x, y, 10, 0, Math.PI * 2);
+
+            //     context.fill();
+            // })
         }
     </script>
 </body>
