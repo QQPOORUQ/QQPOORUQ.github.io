@@ -12,22 +12,25 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <style>
-        h2
-        {
+        h2 {
             text-align: center;
             margin-top: 1em;
         }
+
         body {
             position: relative;
             z-index: 1;
             background-color: rgb(228, 222, 222);
         }
-        .col-1{
+
+        .col-1 {
             padding: 5px;
         }
-        .col-1>i{
+
+        .col-1>i {
             max-width: 100%;
         }
+
         i {
             font-size: 48px;
         }
@@ -54,7 +57,7 @@
             top: 150px;
             /* top: 150px;
             left: 800px;*/
-            position: fixed; 
+            position: fixed;
             /* position: relative; */
             z-index: 0;
             background-color: red;
@@ -148,7 +151,7 @@
         </div>
         <div class="row mt-5">
             <div class="col-12">
-                <button class="btn btn-dark w-100">start</button>\
+                <button class="btn btn-dark w-100">start</button>
             </div>
         </div>
 
@@ -406,6 +409,7 @@
                 box.appendChild(i)
             })
             startBtn.onclick = function () {
+                startBtn.disabled=true
                 speed = 20
                 let random = Math.floor(Math.random() * brickData.length + 1)
                 console.log(random);
@@ -442,7 +446,7 @@
                 msg.innerText = val
                 createCanvas()
                 bonus.innerHTML = getBonus()
-
+                startBtn.disabled=false
             }
         }
 
@@ -457,19 +461,30 @@
 
         function createCanvas() {
             context.beginPath()
+            context.globalCompositeOperation = "source-over";//因為重設的時候將它改成copy了
             context.fillStyle = 'grey'
+            context.font = "normal 30px Arial ";
+            context.strokeStyle = "black";
+            
             context.fillRect(0, 0, 300, 150) //填滿矩形
+            context.strokeText("請用滑鼠刮開！", 50, 100);
+
+
+
+
             //滑鼠按下開刮
             canvas.onmousedown = function () {
                 canvas.onmousemove = function () {
                     //獲取滑鼠坐標
                     let x = event.offsetX;
                     let y = event.offsetY;
+                    console.log(x);
+                    console.log(y);
                     //destination-out 兩圖形重疊部分變透明
                     context.globalCompositeOperation = "destination-out";
                     context.beginPath();
                     // arc(x, y, radius半徑, startAngle, endAngle, anticlockwise)
-                    context.arc(x , y, 10, 0, Math.PI * 2);
+                    context.arc(x, y, 10, 0, Math.PI * 2);
 
                     context.fill();
                 }
